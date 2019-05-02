@@ -44,9 +44,9 @@ function draw() {
     angleMode(DEGREES);
     for(var i = 0; i < 5; i++){
         push();
-        translate(i*50,0);
+        translate(25+i*50,0);
         rotateZ(90);
-        cylinder(10,10);
+        cylinder((i+1)*10,50);
         pop();     
     }
     texture(pg);
