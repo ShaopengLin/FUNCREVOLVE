@@ -3,50 +3,67 @@ var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
+var baseGridXValue = side/20;
+var baseGridYValue = side/20;
 var x=0;
 var y=0;
+var mx = 0;
+var my = 0;
 var c = 0;
 var w = 0;
 var h = 0;
 var angle = 0;
+var mainCanvas;
 var pg;
 function setup() {
-    createCanvas(side,side,WEBGL);
+    mainCanvas = createCanvas(side,side,WEBGL);
+    mainCanvas.position(x,y);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
+    numberOfCylSlider = createSlider(5, 10, 5);
+    numberOfCylSlider.position(600,0);
     b.background(255);
     pg.strokeWeight(3);
-    pg.noFill();
     pg.stroke(0);
+    pg.noFill();
     pg.smooth();
     pg.line(pg.width/2,0,pg.width/2,pg.height);
     pg.line(0,pg.height/2,pg.width,pg.height/2);
     pg.beginShape();
-    
-    /*for (var i = -pg.width/2; i < pg.width/2; i++){
-        pg.vertex(i+pg.width/2,-pow(1/4*i,2)+pg.width/2);
-    }*/
-    for (var i = SCREENSTARTX3D; i < -SCREENSTARTX3D; i++){
-        pg.vertex(i-SCREENSTARTX3D,-SCREENSTARTX3D-i);
+    for (var i = 0; i < 600; i++){
+        pg.vertex(i,600-i);
     }
     pg.endShape();
-    
+     pg.beginShape();
+    for (var i = 0; i < 600; i++){
+        pg.vertex(i,i);
+    }
+    pg.endShape();
+    console.log(baseGridXValue*10);
     frameRate(60);
 }
+//how to rotate a shape but not clear the previous p5.js
 function draw() {
     background(175);
-    angleMode(RADIANS);
+    angleMode(DEGREES);
+    if (mouseIsPressed){
+    if (mouseX < 600 && mouseY < 600){
+        mx += -(pmouseX-mouseX)*0.7;
+        my += (pmouseY-mouseY)*0.7;
+    }
+    }
+    rotateY(mx);
+    rotateX(my);
     push();
-    rotateX(angle);
     texture(b);
     strokeWeight(1);
     stroke(0);
-    angleMode(DEGREES);
-    for(var i = 0; i < 5; i++){
+    //interval 0-5
+    for(var i = 0; i < numberOfCylSlider.value(); i++){
         push();
-        translate(25+i*50,0);
+        translate(baseGridXValue*5/numberOfCylSlider.value()/2+i*(baseGridXValue*5/numberOfCylSlider.value()),0);
         rotateZ(90);
-        cylinder((i+1)*10,50);
+        cylinder((i+1)*10,baseGridXValue*5/numberOfCylSlider.value());
         pop();     
     }
     texture(pg);
@@ -73,9 +90,8 @@ function draw() {
     */
     
 }
-function mouseDragged(){
-    angle = pmouseY;
-}
+
+
 /*function rotatet(){
     
      
