@@ -5,13 +5,8 @@ var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
 var baseGridXValue = side/20;
 var baseGridYValue = side/20;
-var x=0;
-var y=0;
-var mx = 0;
-var my = 0;
-var c = 0;
-var w = 0;
-var h = 0;
+var intervalInit = 1;
+var intervalFinal = 5;
 var angle = 0;
 var mainCanvas;
 var pg;
@@ -20,7 +15,7 @@ function setup() {
     mainCanvas.position(x,y);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
-    numberOfCylSlider = createSlider(5, 10, 5);
+    numberOfCylSlider = createSlider(5, 50, 5);
     numberOfCylSlider.position(600,0);
     b.background(255);
     pg.strokeWeight(3);
@@ -40,7 +35,6 @@ function setup() {
         pg.vertex(i,i);
     }
     pg.endShape();
-    console.log(baseGridXValue*10);
     frameRate(60);
 }
 //how to rotate a shape but not clear the previous p5.js
@@ -59,16 +53,18 @@ function draw() {
     texture(b);
     strokeWeight(1);
     stroke(0);
-    //interval 0-5
+    //interval 1-5
+    push();
+    translate(baseGridXValue*(intervalFinal-intervalInit)/numberOfCylSlider.value()/2+intervalInit*baseGridXValue,0);
     for(var i = 0; i < numberOfCylSlider.value(); i++){
-        push();
-        
-        translate(baseGridXValue*5/numberOfCylSlider.value()/2+i*(baseGridXValue*5/numberOfCylSlider.value()),0);
-        
+        push(); 
+        translate(i*baseGridXValue*(intervalFinal-intervalInit)/numberOfCylSlider.value(),0);
         rotateZ(90);
-        cylinder((i+1)*10,baseGridXValue*5/numberOfCylSlider.value());
+       check = box(); cylinder(calculateCylinderRadius((i/numberOfCylSlider.value())*baseGridXValue*5, ((i+1)/numberOfCylSlider.value())*baseGridXValue*5), baseGridXValue*5/numberOfCylSlider.value());
         pop();     
     }
+    
+    pop();
     texture(pg);
     translate(-width/2,-height/2,0);
     rect(0, 0, side, side);
@@ -109,8 +105,9 @@ function draw() {
     
 }*/
 //need input later interval 0-5
-function calculateCylinderRadius(int cylinderNumber){
-    return cylinderNumber*
+function calculateCylinderRadius(leftXcoord, rightXcoord){
+    console.log(rightXcoord);
+    return (leftXcoord+rightXcoord)/2;
 }
 function outputname(){
     var input;
