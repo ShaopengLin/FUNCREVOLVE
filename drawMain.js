@@ -5,14 +5,16 @@ var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
 var baseGridXValue = side/20;
 var baseGridYValue = side/20;
-var intervalInit = 1;
+var intervalInit = -5;
 var intervalFinal = 5;
+var mx = 0;
+var my = 0;
 var angle = 0;
 var mainCanvas;
 var pg;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(x,y);
+    mainCanvas.position(0,0);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     numberOfCylSlider = createSlider(5, 50, 5);
@@ -45,7 +47,7 @@ function draw() {
     if (mouseX < 600 && mouseY < 600){
         mx += -(pmouseX-mouseX)*0.7;
         my += (pmouseY-mouseY)*0.7;
-    }
+        }
     }
     rotateY(mx);
     rotateX(my);
@@ -60,7 +62,7 @@ function draw() {
         push(); 
         translate(i*baseGridXValue*(intervalFinal-intervalInit)/numberOfCylSlider.value(),0);
         rotateZ(90);
-       check = box(); cylinder(calculateCylinderRadius((i/numberOfCylSlider.value())*baseGridXValue*5, ((i+1)/numberOfCylSlider.value())*baseGridXValue*5), baseGridXValue*5/numberOfCylSlider.value());
+        cylinder(calculateCylinderRadius((i/numberOfCylSlider.value()) * baseGridXValue*(intervalFinal-intervalInit)+intervalInit*baseGridXValue, (i+1)/numberOfCylSlider.value() * baseGridXValue*(intervalFinal-intervalInit)+intervalInit*baseGridXValue), baseGridXValue*(intervalFinal-intervalInit)/numberOfCylSlider.value());
         pop();     
     }
     
@@ -106,7 +108,6 @@ function draw() {
 }*/
 //need input later interval 0-5
 function calculateCylinderRadius(leftXcoord, rightXcoord){
-    console.log(rightXcoord);
     return (leftXcoord+rightXcoord)/2;
 }
 function outputname(){
