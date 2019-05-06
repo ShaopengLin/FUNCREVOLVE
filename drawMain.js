@@ -30,11 +30,12 @@ function setup() {
     pg.line(pg.width/2,0,pg.width/2,pg.height);
     pg.line(0,pg.height/2,pg.width,pg.height/2);
     pg.beginShape();
+    
     for (var i = 0; i < 600; i++){
         pg.vertex(i,600-i);
     }
     pg.endShape();
-     pg.beginShape();
+    pg.beginShape();
     for (var i = 0; i < 600; i++){
         pg.vertex(i,i);
     }
@@ -61,7 +62,9 @@ function draw() {
     //interval 0-5
     for(var i = 0; i < numberOfCylSlider.value(); i++){
         push();
+        
         translate(baseGridXValue*5/numberOfCylSlider.value()/2+i*(baseGridXValue*5/numberOfCylSlider.value()),0);
+        
         rotateZ(90);
         cylinder((i+1)*10,baseGridXValue*5/numberOfCylSlider.value());
         pop();     
@@ -105,7 +108,10 @@ function draw() {
     }
     
 }*/
-
+//need input later interval 0-5
+function calculateCylinderRadius(int cylinderNumber){
+    return cylinderNumber*
+}
 function outputname(){
     var input;
     input = document.getElementById("xCoord");
