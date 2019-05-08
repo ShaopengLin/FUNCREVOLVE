@@ -7,8 +7,8 @@ var baseGridXValue = side/40;
 var baseGridYValue = side/40;
 var intervalInit = 0;
 var intervalFinal =5;
-var translationY = -1*baseGridYValue;
-var slope = 3;
+var translationY = 0*baseGridYValue;
+var slope = 1;
 var mx = 0;
 var my = 0;
 var angle = 0;
@@ -17,14 +17,13 @@ var pg;
 var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(100,100);
+    mainCanvas.position(100,0);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     numberOfCylSlider = createSlider(5, 50, 5);
     numberOfCylSlider.position(600,0);
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
-    calculateIntegralLinear();
     frameRate(60);
 
 }
@@ -109,15 +108,21 @@ function drawLinearVolumnEstimate(){
 }
 function drawIntervalLinear(start , end){
     pg.clear();
+
     pg.strokeWeight(3);
     pg.stroke(0);
     pg.noFill();
     pg.smooth();
-    
+    pg.textSize(16);
+    //y axis
     pg.line(pg.width/2,0,pg.width/2,pg.height);
+    pg.text("Y",pg.width/2+16,16);
+
+    pg.line()
+    //x axis
+    pg.text("X",pg.width-16,pg.height/2-16);
     pg.line(0,pg.height/2,pg.width,pg.height/2);
-    
-    
+
     pg.strokeWeight(6);
     pg.stroke(255,0,0);
     pg.push();
@@ -128,12 +133,21 @@ function drawIntervalLinear(start , end){
     }
     pg.endShape();
     pg.pop();
+    pg.strokeWeight(1);
+    pg.stroke(0);
+    for (var i = 5; i < 35; i++){
+        pg.line(pg.width/2-baseGridXValue/2, baseGridXValue*i, pg.width/2+baseGridXValue/2, baseGridXValue*i);
+    }
+    for (var i = 5; i < 35; i++){
+        pg.line(baseGridYValue*i ,pg.height/2-baseGridYValue/2, baseGridYValue*i ,pg.height/2+baseGridYValue/2);
+    }
     
 }
 function rotateCanvas(){
         angleMode(DEGREES);
     if (mouseIsPressed){
-    if (mouseX < mainCanvas.x+side && mouseY < mainCanvas.y+side){
+    if (mouseX <= side && mouseX >= 0 && mouseY >= 0 && mouseY <=side){
+
         mx += -(pmouseX-mouseX)*0.7;
         my += (pmouseY-mouseY)*0.7;
     }
@@ -141,9 +155,9 @@ function rotateCanvas(){
     rotateY(mx);
     rotateX(my);
 }
-function calculateIntegralLinear(){
+/*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
     var lowerBound = 
     document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
-}
+}*/
 
