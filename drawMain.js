@@ -5,24 +5,26 @@ var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
 var baseGridXValue = side/40;
 var baseGridYValue = side/40;
-var intervalInit = 1;
+var intervalInit = 0;
 var intervalFinal =5;
-var translationY = 0*baseGridYValue;
-var slope = 1;
+var translationY = -1*baseGridYValue;
+var slope = 3;
 var mx = 0;
 var my = 0;
 var angle = 0;
 var mainCanvas;
 var pg;
+var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(0,0);
+    mainCanvas.position(100,100);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     numberOfCylSlider = createSlider(5, 50, 5);
     numberOfCylSlider.position(600,0);
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
+    calculateIntegralLinear();
     frameRate(60);
 
 }
@@ -111,35 +113,37 @@ function drawIntervalLinear(start , end){
     pg.stroke(0);
     pg.noFill();
     pg.smooth();
+    
     pg.line(pg.width/2,0,pg.width/2,pg.height);
     pg.line(0,pg.height/2,pg.width,pg.height/2);
+    
+    
     pg.strokeWeight(6);
     pg.stroke(255,0,0);
-
-    pg.beginShape();
+    pg.push();
     pg.translate(0,-translationY);
+    pg.beginShape();
     for (var i = start; i < end; i++){
         pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
     }
     pg.endShape();
+    pg.pop();
+    
 }
 function rotateCanvas(){
-    push();
-    angleMode(DEGREES);
+        angleMode(DEGREES);
     if (mouseIsPressed){
     if (mouseX < mainCanvas.x+side && mouseY < mainCanvas.y+side){
         mx += -(pmouseX-mouseX)*0.7;
         my += (pmouseY-mouseY)*0.7;
-        }
+    }
     }
     rotateY(mx);
     rotateX(my);
-    pop();
 }
-function outputname(){
-    var input;
-    input = document.getElementById("xCoord");
-    x = input.elements["xC"].value;
-    input = document.getElementById("yCoord");
-    y = input.elements["yC"].value;
+function calculateIntegralLinear(){
+    var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
+    var lowerBound = 
+    document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
 }
+
