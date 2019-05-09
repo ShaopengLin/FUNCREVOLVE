@@ -5,7 +5,7 @@ var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
 var baseGridXValue = side/40;
 var baseGridYValue = side/40;
-var intervalInit = 0;
+var intervalInit = -3;
 var intervalFinal =5;
 var translationY = 0*baseGridYValue;
 var slope = 1;
@@ -17,11 +17,11 @@ var pg;
 var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(100,0);
+    mainCanvas.position(0,0);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     numberOfCylSlider = createSlider(5, 50, 5);
-    numberOfCylSlider.position(600,0);
+    numberOfCylSlider.position(610,0);
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
@@ -40,41 +40,9 @@ function draw() {
     rect(0, 0, side, side);
 
     pop();
-    /*background(175);
-   rotateY(w);
-    w = cos(h);
-    h += 0.01;
-    pg.strokeWeight(3);
-    pg.stroke(0);
-    pg.noFill();
-    pg.smooth();
-    pg.box();
-    
-    beginShape();
-    
-    for (var i = -width; i < width; i++){
-        pg.vertex(i,-pow(i,2));
-    }
-    endShape();
-    image(pg, 0,0);
-    */
     
 }
 
-
-/*function rotatet(){
-    
-     
-    if (mouseIsPressed){
-    if (mouseButton === LEFT){
-    rotatedX = pmouseX;
-    rotatedY = -mouseY*0.0;
-    rotateX(rotatedX);
-    rotateY(rotatedY);
-    }
-    }
-    
-}*/
 //need input later interval 0-5
 function getLinearLeftX(i){
     return slope*((i / numberOfCylSlider.value()) * baseGridXValue*(intervalFinal-intervalInit) + intervalInit*baseGridXValue) + translationY;
@@ -108,40 +76,11 @@ function drawLinearVolumnEstimate(){
 }
 function drawIntervalLinear(start , end){
     pg.clear();
-
-    pg.strokeWeight(3);
-    pg.stroke(0);
     pg.noFill();
     pg.smooth();
-    pg.textSize(16);
-    //y axis
-    pg.line(pg.width/2,0,pg.width/2,pg.height);
-    pg.text("Y",pg.width/2+16,16);
-
-    pg.line()
-    //x axis
-    pg.text("X",pg.width-16,pg.height/2-16);
-    pg.line(0,pg.height/2,pg.width,pg.height/2);
-
-    pg.strokeWeight(6);
-    pg.stroke(255,0,0);
-    pg.push();
-    pg.translate(0,-translationY);
-    pg.beginShape();
-    for (var i = start; i < end; i++){
-        pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
-    }
-    pg.endShape();
-    pg.pop();
-    pg.strokeWeight(1);
-    pg.stroke(0);
-    for (var i = 5; i < 35; i++){
-        pg.line(pg.width/2-baseGridXValue/2, baseGridXValue*i, pg.width/2+baseGridXValue/2, baseGridXValue*i);
-    }
-    for (var i = 5; i < 35; i++){
-        pg.line(baseGridYValue*i ,pg.height/2-baseGridYValue/2, baseGridYValue*i ,pg.height/2+baseGridYValue/2);
-    }
-    
+    drawCoordinates();
+    drawLinearFunction(start, end);
+    drawGrid();
 }
 function rotateCanvas(){
         angleMode(DEGREES);
@@ -154,6 +93,63 @@ function rotateCanvas(){
     }
     rotateY(mx);
     rotateX(my);
+}
+function drawGrid(){
+    push();
+    pg.strokeWeight(0.5);
+    pg.stroke(0);
+    //Y axis grid
+    for (var i = 5; i < 35; i++){
+        pg.line(baseGridXValue*5, baseGridXValue*i, baseGridXValue*35, baseGridXValue*i);
+    }
+    //X axis grid
+    for (var i = 5; i < 35; i++){
+        pg.line(baseGridYValue*i ,baseGridYValue*5, baseGridYValue*i ,baseGridYValue*35);
+    }
+    pop();
+}
+function drawLinearFunction(start, end){
+    pg.push();
+    pg.strokeWeight(6);
+    pg.stroke(255,0,0);
+    pg.translate(0,-translationY);
+    pg.beginShape();
+    for (var i = start; i < end; i++){
+        pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
+    }
+    pg.endShape();
+    pg.pop();
+}
+function drawCoordinates(){
+    push();
+    pg.strokeWeight(3);
+    pg.stroke(0);
+    pg.textSize(16);
+    
+    //y axis
+    pg.line(pg.width/2,0,pg.width/2,pg.height);
+    pg.text("Y",pg.width/2+16,16);
+    //Coordinates Y
+    for (var i = 5; i <16; i+=5){
+
+        pg.text(i.toString(),baseGridXValue*5-2*baseGridXValue,pg.height/2-baseGridYValue*(i) + baseGridYValue/2);
+    }
+    for (var i = -5; i >-16; i-=5){
+        pg.text(i.toString(),baseGridXValue*5-2*baseGridXValue,pg.height/2+baseGridYValue*(-i) + baseGridYValue/2);
+    }
+
+    //x axis
+    pg.text("X",pg.width-16,pg.height/2-16);
+    pg.line(0,pg.height/2,pg.width,pg.height/2);
+        //Coordinates X
+    for (var i = -5; i >-16; i-=5){
+        pg.text(i.toString(),pg.width/2-baseGridYValue*(-i+1.5) + baseGridYValue/2, baseGridXValue*35+2*baseGridXValue);
+    }
+    for (var i = 5; i <16; i+=5){
+
+        pg.text(i.toString(),pg.width/2+baseGridXValue*(i)-baseGridXValue/2, baseGridXValue*35+2*baseGridXValue);
+    }
+    pop();
 }
 /*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
