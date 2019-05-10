@@ -5,7 +5,7 @@ var SCREENSTARTX3D = (-side/2);
 var SCREENSTARTY3D = (-side/2);
 var baseGridXValue = side/40;
 var baseGridYValue = side/40;
-var intervalInit = -3;
+var intervalInit = 0;
 var intervalFinal =5;
 var translationY = 0*baseGridYValue;
 var slope = 1;
@@ -17,7 +17,7 @@ var pg;
 var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(0,0);
+    mainCanvas.position();
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     numberOfCylSlider = createSlider(5, 50, 5);
@@ -120,6 +120,18 @@ function drawLinearFunction(start, end){
     pg.endShape();
     pg.pop();
 }
+function drawPowerFunction(){
+    pg.push();
+    pg.strokeWeight(6);
+    pg.stroke(255,0,0);
+    pg.translate(0,-translationY);
+    pg.beginShape();
+    for (var i = start; i < end; i++){
+        pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
+    }
+    pg.endShape();
+    pg.pop();
+}
 function drawCoordinates(){
     push();
     pg.strokeWeight(3);
@@ -151,6 +163,7 @@ function drawCoordinates(){
     }
     pop();
 }
+
 /*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
     var lowerBound = 
