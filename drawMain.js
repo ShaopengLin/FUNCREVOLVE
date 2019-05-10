@@ -1,4 +1,4 @@
-var side = 600;
+var side = 500;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2);
@@ -9,6 +9,7 @@ var intervalInit = 0;
 var intervalFinal =5;
 var translationY = 0*baseGridYValue;
 var slope = 1;
+var subIntervals = 0;
 var mx = 0;
 var my = 0;
 var angle = 0;
@@ -17,11 +18,9 @@ var pg;
 var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position();
+    mainCanvas.position(100,200);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
-    numberOfCylSlider = createSlider(5, 50, 5);
-    numberOfCylSlider.position(610,0);
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
@@ -30,6 +29,7 @@ function setup() {
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
     background(175);
+    getInfo();
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();
@@ -42,13 +42,19 @@ function draw() {
     pop();
     
 }
-
+function getInfo(){
+    intervalInit = lowerBound();
+    intervalFinal =upperBound();
+    translationY = linearVerticalShift()*baseGridYValue;
+    slope = linearSlope();
+    subIntervals = getSubIntervals();
+}
 //need input later interval 0-5
 function getLinearLeftX(i){
-    return slope*((i / numberOfCylSlider.value()) * baseGridXValue*(intervalFinal-intervalInit) + intervalInit*baseGridXValue) + translationY;
+    return slope*((i / subIntervals) * baseGridXValue*(intervalFinal-intervalInit) + intervalInit*baseGridXValue) + translationY;
 }
 function getLinearRightX(i){
-    return slope*(i + 1) / numberOfCylSlider.value() * baseGridXValue*(intervalFinal-intervalInit) + slope*intervalInit*baseGridXValue+ translationY;
+    return slope*(i + 1) / subIntervals * baseGridXValue*(intervalFinal-intervalInit) + slope*intervalInit*baseGridXValue+ translationY;
 }
 function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
@@ -59,17 +65,17 @@ function drawLinearVolumnEstimate(){
     strokeWeight(1);
     stroke(0);
     //initial fixation
-    translate(baseGridXValue * (intervalFinal - intervalInit) / numberOfCylSlider.value() / 2+intervalInit * baseGridXValue , 0);
+    translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
     //vertical translation
-    for(var i = 0; i < numberOfCylSlider.value(); i++){
+    for(var i = 0; i < subIntervals; i++){
         push(); 
         //translate length of each cylinder
-        translate(i*baseGridXValue * (intervalFinal - intervalInit) / numberOfCylSlider.value(),0);
+        translate(i*baseGridXValue * (intervalFinal - intervalInit) / subIntervals,0);
         //rotate by 90 degree
         rotateZ(90);
         //draw cylinder
         
-        cylinder(calculateCylinderRadiusLinear(getLinearLeftX(i),getLinearRightX(i)) , baseGridXValue * (intervalFinal-intervalInit) / numberOfCylSlider.value());
+        cylinder(calculateCylinderRadiusLinear(getLinearLeftX(i),getLinearRightX(i)) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         pop();      
     }
     pop();

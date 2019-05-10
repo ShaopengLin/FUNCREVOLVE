@@ -1,13 +1,4 @@
 
-
-function setup(){
-
-}
-
-function draw(){
-	console.log(linearVerticalShift());
-}
-
 function lowerBound() {
 	var lowerBound = document.getElementById("lowerBound").value;
 	return parseFloat(lowerBound, 10);
@@ -18,7 +9,7 @@ function upperBound() {
 	return parseFloat(upperBound, 10);
 }
 
-function subintervals(){
+function getSubIntervals(){
 	var subintervals = document.getElementById("subintervals").value;
 	return parseFloat(subintervals, 10);
 }
@@ -41,6 +32,9 @@ function linearVerticalShift(){
 	var linearFunction = document.getElementById("function1").value;
 	if(linearFunction.search("x") == -1){
 		return linearFunction;
+	}
+    else if(linearFunction.search("x") == 0){
+		return 0;
 	}
 	else{
 		var verticalShift = linearFunction.substr(linearFunction.search("x") + 1, linearFunction.length);
