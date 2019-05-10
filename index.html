@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title> Function Revolution </title>
+    <script src="function revolution.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="description" content="This is a web application that draws volumes by integral" />
+    <meta name="keywords" content="function volume revolution integral"/>
+    <meta http-equiv="author" content="Michael Chris" />
+    <meta http-equiv="content-language" content="en-us" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+
+  <body>
+    <h1> Welcome to Function Revolution</h1>
+    <p class="intro"> This web based application will help you calculate volumes by using integral </p>
+
+    <div id="divWindow">
+    	<input type="submit" value="Reset View" name="" class="button" id="resetView">
+    	<input type="radio" name="solidorwireframe">
+    	Solid
+    	<input type="radio" name="solidorwireframe" checked="">
+    	Wireframe
+    	<input type="submit" value="Set Window" name="" class="button" id="setWindow">
+    </div>
+
+    <div class="divColour">
+        <h2> Set Colours </h2>
+    	<p class="paragraph"> Function 1 Colours: </p> 
+    	<select>
+    		<option value="red">red</option>
+    		<option value="blue">blue</option>
+    		<option value="green">green</option>
+    	</select><br>
+
+    	<p class="paragraph"> Function 2 Colours: </p>
+    	<select>
+    		<option value="blue">blue</option>
+    		<option value="red">red</option>
+    		<option value="green">green</option>
+    	</select>
+    </div>
+
+    <div class="divFunction">
+        <h2> Functions </h2>
+        <p class="paragraph"> Function 1</p>
+        <label for="function1" style="color: red;">f(x)= </label>
+        <input type="text" id="function1" name="" value="3x+1">
+        <p class="paragraph"> Function 2 <br> For washer method. <br> Leave blank for disk method</p>
+        <label for="function2" style="color: red;">g(x)= </label>
+        <input type="text" id="function2" name="">
+        <div style="text-align: center;">
+            From <input type="text" size="8" value="-15.0" id="lowerBound" > to <input type="text" size="8" id="upperBound" value="15.0">
+        </div>
+        <input type="submit" value="Set Function" name="" class="button" id="setFunction">       
+    </div>
+
+    <div class="divRevolve">
+        <h2> Revolve </h2>
+        <input type="submit" value="Revolve" name="" class="button" id="revolve">
+        <p class="paragraph"> Non vertical line: <br> The line y=0 is the x-axis.</p>
+        <input type="radio" name="xory" checked="">
+        across y=
+        <input type="Number" value="0" name="" style="width: 40px;">
+        <p class="paragraph"> Vertical line: <br> The line x=0 is the y-axis.</p>
+        <input type="radio" name="xory">
+        across x=
+        <input type="Number" value="0" name="" style="width: 40px;">
+        <br><input type="submit" value="Clear Graph" name="" class="button" id="clearGraph">
+    </div>
+
+    <div class="divStatistics" id = "volumeDisplay">
+        <h2> Statistics </h2>
+        <p style="font-size: 20px;"> Number of Subintervals(5 to infinity) </p> 
+        <input type="range" min="5" max="50" value="5" class="slider" id="subintervals">
+        <p style="text-align: left; margin-left: 10px;">Volume:</p>
+    </div> 
+
+  </body>
+</html>

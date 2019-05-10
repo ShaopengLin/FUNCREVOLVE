@@ -1,0 +1,195 @@
+body{
+  background-color: #ffcf79;
+  font-family: Helvetica;
+}
+
+h1{
+  font-size: 250%;
+  font-weight: bold;
+  color: #2980B9;
+  text-decoration: underline;
+  text-align: center;
+}
+
+h2{
+  margin: 0px;
+  font-size: 25px;
+  padding: 10px;
+  text-align: left;
+  border-bottom-color: black;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  background-color: #5DADE2;
+}
+
+p.intro{
+  font-style: italic;
+  font-size: 25px;
+  text-align: center;
+  color: #3498DB;
+}
+
+p.paragraph{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#divWindow{
+  font-size: 25px;
+  padding: 10px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #D6DBDF;
+  width: 490px;
+}
+
+.divColour{
+  font-size: 25px;
+  text-align: center;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: #D6DBDF;
+  margin-top: 70px;
+  margin-right: 100px;
+  width: 300px;
+  float: right;
+}
+
+.divFunction{
+  line-height: 140%;
+  font-size: 25px;
+  text-align: center;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: #D6DBDF;
+  margin-top: 450px;
+  margin-left: 50px;
+  float: left;
+  width: 380px;
+}
+
+.divRevolve{
+  line-height: 140%;
+  font-size: 25px;
+  text-align: center;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: #D6DBDF;
+  margin: 30px;
+  margin-top: 450px;
+  float: left;
+  width: 380px;
+}
+
+.divStatistics{
+  font-size: 25px;
+  text-align: center;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: #D6DBDF;
+  margin-top: 137px;
+  width: 400px;
+  float: left;
+}
+
+.button{
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  color: #666;
+  border-color: #99A3A4;
+  background-color: #E7E7E7;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+#resetView:hover{
+  color: #000;
+  border-color: black;
+}
+
+#setWindow:hover{
+  color: #000;
+  border-color: black;
+}
+
+#setFunction:hover{
+  color: #000;
+  border-color: black;
+}
+
+#revolve:hover{
+  color: #000;
+  border-color: black;
+}
+
+#clearGraph:hover{
+  color: #000;
+  border-color: black;
+}
+
+select {
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  margin: 10px;
+}
+    
+select:focus {
+  min-width: 150px;
+  width: auto;
+}
+
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 40%; /* Full-width */
+  height: 7px; /* Specified height */
+  background: #2E4053; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: #F4D03F; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
