@@ -32,6 +32,7 @@ function setup() {
 function draw() {
     background(255);
     angleMode(DEGREES);
+    subIntervals = getSubIntervals();
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();
@@ -49,7 +50,7 @@ function getInfo(){
         intervalFinal =upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-        subIntervals = getSubIntervals();
+        
 }
 //need input later interval 0-5
 function getLinearLeftX(i){
@@ -128,18 +129,7 @@ function drawLinearFunction(start, end){
     pg.endShape();
     pg.pop();
 }
-function drawPowerFunction(){
-    pg.push();
-    pg.strokeWeight(6);
-    pg.stroke(255,0,0);
-    pg.translate(0,-translationY);
-    pg.beginShape();
-    for (var i = start; i < end; i++){
-        pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
-    }
-    pg.endShape();
-    pg.pop();
-}
+
 function drawCoordinates(){
     push();
     pg.strokeWeight(3);
@@ -172,13 +162,6 @@ function drawCoordinates(){
     pop();
 }
 
-/*function calculateXvaluePower(){
-    var equation = document.getElementById("function1").value;
-    if (){
-        
-    }
-    
-}*/
 /*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
     var lowerBound = 
