@@ -1,6 +1,3 @@
-
-console.log();
-
 function lowerBound() {
 	var lowerBound = document.getElementById("lowerBound").value;
 	return parseFloat(lowerBound, 10);
@@ -46,16 +43,6 @@ function linearVerticalShift(){
 		return parseFloat(verticalShift, 10);
 	}
 }
-
-function setFunction(){
-	if (document.getElementById("setFunction").click == true) {
-		return true;
-	}
-	return false;
-}
-
-
-
 //function linear
 
 //var x;

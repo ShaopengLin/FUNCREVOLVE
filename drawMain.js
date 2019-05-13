@@ -32,7 +32,6 @@ function setup() {
 function draw() {
     background(255);
     angleMode(DEGREES);
-    getInfo();
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();
@@ -46,13 +45,11 @@ function draw() {
     
 }
 function getInfo(){
-    if(setFunction()){
         intervalInit = lowerBound();
         intervalFinal =upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
         subIntervals = getSubIntervals();
-    }
 }
 //need input later interval 0-5
 function getLinearLeftX(i){
