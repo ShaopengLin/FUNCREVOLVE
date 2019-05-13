@@ -35,9 +35,12 @@ function linearVerticalShift(){
 	if(linearFunction.search("x") == -1){
 		return linearFunction;
 	}
-    else if(linearFunction.search("x") == 0){
+    else if(linearFunction.length == 1 && linearFunction.search("x") == 0){
 		return 0;
 	}
+    else if(linearFunction.length == linearFunction.search("x")+1){
+        return 0;
+    }
 	else{
 		var verticalShift = linearFunction.substr(linearFunction.search("x") + 1, linearFunction.length);
 		return parseFloat(verticalShift, 10);

@@ -16,29 +16,32 @@ var angle = 0;
 var mainCanvas;
 var pg;
 var yes = 0;
+var transp;
+
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(450,250);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
+    transp = createGraphics(side,side);
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
-
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
-    background(175);
+    background(255);
+    angleMode(DEGREES);
     getInfo();
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();
     //interval 1-5
+    
     push();
     texture(pg);
     translate(-width/2,-height/2,0);
     rect(0, 0, side, side);
-
     pop();
     
 }
@@ -172,6 +175,13 @@ function drawCoordinates(){
     pop();
 }
 
+/*function calculateXvaluePower(){
+    var equation = document.getElementById("function1").value;
+    if (){
+        
+    }
+    
+}*/
 /*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
     var lowerBound = 
