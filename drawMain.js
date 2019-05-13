@@ -17,6 +17,7 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
+
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(100,200);
@@ -172,6 +173,13 @@ function drawCoordinates(){
     pop();
 }
 
+/*function calculateXvaluePower(){
+    var equation = document.getElementById("function1").value;
+    if (){
+        
+    }
+    
+}*/
 /*function calculateIntegralLinear(){
     var upperBound = (pow(slope*intervalFinal,3)/slope)+pow(2*slope*intervalFinal*(translationY/baseGridYValue))+
     var lowerBound = 
