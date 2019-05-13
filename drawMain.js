@@ -1,4 +1,4 @@
-var side = 500;
+var side = 450;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2);
@@ -18,7 +18,7 @@ var pg;
 var yes = 0;
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(100,200);
+    mainCanvas.position(450,250);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     b.background(255);
@@ -29,7 +29,9 @@ function setup() {
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
     background(175);
-    getInfo();
+    if(setFunction()){
+        getInfo();
+    }
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();

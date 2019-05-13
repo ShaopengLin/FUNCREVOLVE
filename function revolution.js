@@ -42,6 +42,13 @@ function linearVerticalShift(){
 	}
 }
 
+function setFunction(){
+	if (document.getElementById("setFunction").click == true) {
+		return true;
+	}
+	return false;
+}
+
 
 
 //function linear
