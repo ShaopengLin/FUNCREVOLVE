@@ -1,4 +1,6 @@
 
+console.log();
+
 function lowerBound() {
 	var lowerBound = document.getElementById("lowerBound").value;
 	return parseFloat(lowerBound, 10);

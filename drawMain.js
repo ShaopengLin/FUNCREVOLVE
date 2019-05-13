@@ -29,9 +29,7 @@ function setup() {
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
     background(175);
-    if(setFunction()){
-        getInfo();
-    }
+    getInfo();
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
     rotateCanvas();
     drawLinearVolumnEstimate();
@@ -45,11 +43,13 @@ function draw() {
     
 }
 function getInfo(){
-    intervalInit = lowerBound();
-    intervalFinal =upperBound();
-    translationY = linearVerticalShift()*baseGridYValue;
-    slope = linearSlope();
-    subIntervals = getSubIntervals();
+    if(setFunction()){
+        intervalInit = lowerBound();
+        intervalFinal =upperBound();
+        translationY = linearVerticalShift()*baseGridYValue;
+        slope = linearSlope();
+        subIntervals = getSubIntervals();
+    }
 }
 //need input later interval 0-5
 function getLinearLeftX(i){
