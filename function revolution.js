@@ -1,20 +1,24 @@
 function lowerBound() {
 	var lowerBound = document.getElementById("lowerBound").value;
+    lowerBound = lowerBound.replace(/\s/g,'');
 	return parseFloat(lowerBound, 10);
 }
 
 function upperBound() {
 	var upperBound = document.getElementById("upperBound").value;
+    upperBound = upperBound.replace(/\s/g,'');
 	return parseFloat(upperBound, 10);
 }
 
 function getSubIntervals(){
 	var subintervals = document.getElementById("subintervals").value;
+    subintervals = subintervals.replace(/\s/g,'');
 	return parseFloat(subintervals, 10);
 }
 
 function linearSlope(){
 	var linearFunction = document.getElementById("function1").value;
+    linearFunction = linearFunction.replace(/\s/g,'');
 	if(linearFunction.search("x") == -1){
 		return 0;
 	}
@@ -29,6 +33,7 @@ function linearSlope(){
 
 function linearVerticalShift(){
 	var linearFunction = document.getElementById("function1").value;
+    linearFunction = linearFunction.replace(/\s/g,'');
 	if(linearFunction.search("x") == -1){
 		return linearFunction;
 	}

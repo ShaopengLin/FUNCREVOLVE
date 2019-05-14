@@ -17,7 +17,6 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
-
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(450,250);
@@ -50,6 +49,7 @@ function getInfo(){
         intervalFinal =upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
+    calculateXvaluePower();
         
 }
 //need input later interval 0-5

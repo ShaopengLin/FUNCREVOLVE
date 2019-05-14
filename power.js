@@ -1,12 +1,18 @@
 function calculateXvaluePower(){
-    var equation = document.getElementById("function1").value;
-    if (){
-        
+    var powerFunction = document.getElementById("function1").value;
+    var powerSignPos = powerFunction.indexOf("^")
+    var powerOf;
+    var x = 3;
+    for (var i = 1; !isNaN(powerFunction[powerSignPos+i]); i++){
+
+        powerOf = powerFunction.substr(powerSignPos+1,i);
     }
+    var powerNum = "x^" + powerOf;
+    powerFunction = powerFunction.replace(/\s/g,'');
+    powerNum = powerNum.replace(powerNum,"Math.pow(x,"+powerOf+')');
+    console.log(eval(powerNum));
 }
-function partialCalculation(){
-        
-}
+
 function drawPowerFunction(){
     pg.push();
     pg.strokeWeight(6);
