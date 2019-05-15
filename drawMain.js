@@ -28,11 +28,9 @@ function setup() {
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
-<<<<<<< HEAD
-=======
+
    //console.log(math.simplify("3+2/4").toString());
    //findYCoordinate(1);
->>>>>>> dfd9f038fbf009cb6086b8f7627ed64133a993d4
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -57,17 +55,23 @@ function getInfo(){
         intervalFinal = upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
+<<<<<<< HEAD
         calculateXvaluePower();
+=======
+
+        //calculateXvaluePower();
+        //trigYcoord();
+>>>>>>> f5f4cd63c52543a197bcc61972fcad190d7f92fd
         getEquation();
         
 }
 
 //need input later interval 0-5
 function getLinearLeftX(i){
-    return slope*((i / subIntervals) * baseGridXValue*(intervalFinal-intervalInit) + intervalInit*baseGridXValue) + translationY;
+    return findYCoordinate(i);
 }
 function getLinearRightX(i){
-    return slope*(i + 1) / subIntervals * baseGridXValue*(intervalFinal-intervalInit) + slope*intervalInit*baseGridXValue+ translationY;
+    return findYCoordinate(i+1/subIntervals* (intervalFinal - intervalInit));
 }
 function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
@@ -75,14 +79,15 @@ function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
 
 function drawLinearVolumnEstimate(){
     push();
-   /* texture(b);
-        strokeWeight(1);
+    texture(b);
+    strokeWeight(1);
     stroke(0);
-
+    var xCoord = intervalInit;
     //initial fixation
     translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
     //vertical translation
     for(var i = 0; i < subIntervals; i++){
+         
         push(); 
         //translate length of each cylinder
         translate(i*baseGridXValue * (intervalFinal - intervalInit) / subIntervals,0);
@@ -90,9 +95,11 @@ function drawLinearVolumnEstimate(){
         rotateZ(90);
         //draw cylinder
         
-        cylinder(calculateCylinderRadiusLinear(getLinearLeftX(i),getLinearRightX(i)) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
-        pop();      
-    }*/
+        cylinder(calculateCylinderRadiusLinear(getLinearLeftX(xCoord)*baseGridXValue,getLinearRightX(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+        xCoord += 1/subIntervals* (intervalFinal - intervalInit);
+        pop();     
+        
+    }
     pop();
 }
 function drawIntervalLinear(start , end){
@@ -131,13 +138,13 @@ function drawGrid(){
 }
 function drawLinearFunction(start, end){
     pg.push();
-    pg.strokeWeight(1);
+    pg.strokeWeight(3);
     pg.stroke(255,0,0);
-    pg.translate(0,-translationY);
+    //pg.translate(0,-translationY);
     pg.beginShape();
     for (var i = start; i <= end; i++){
         pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i)*baseGridXValue-SCREENSTARTY3D);
-        console.log(-findYCoordinate(0)*baseGridXValue);
+
     }
     pg.endShape();
     pg.pop();
