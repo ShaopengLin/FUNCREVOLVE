@@ -1,10 +1,10 @@
-var side = 450;
+var side = 400;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
-var SCREENSTARTX3D = (-side/2);
-var SCREENSTARTY3D = (-side/2);
-var baseGridXValue = side/40;
-var baseGridYValue = side/40;
+var SCREENSTARTX3D = (-side/2.0);
+var SCREENSTARTY3D = (-side/2.0);
+var baseGridXValue = side/40.0;
+var baseGridYValue = side/40.0;
 var intervalInit = 0;
 var intervalFinal =5;
 var translationY = 0*baseGridYValue;
@@ -17,6 +17,7 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
+var equation = "x";
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
@@ -27,7 +28,8 @@ function setup() {
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
-   // console.log(math.simplify("3+2/4").toString());
+   //console.log(math.simplify("3+2/4").toString());
+   //findYCoordinate(1);
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -35,7 +37,7 @@ function draw() {
     background(255);
     angleMode(DEGREES);
     subIntervals = getSubIntervals();
-    drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
+    drawIntervalLinear(intervalInit,intervalFinal);
     rotateCanvas();
     drawLinearVolumnEstimate();
     //interval 1-5
@@ -52,8 +54,9 @@ function getInfo(){
         intervalFinal = upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-        calculateXvaluePower();
-        trigYcoord();
+        //calculateXvaluePower();
+        //trigYcoord();
+        getEquation();
         
 }
 //need input later interval 0-5
@@ -69,7 +72,7 @@ function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
 
 function drawLinearVolumnEstimate(){
     push();
-    texture(b);
+   /* texture(b);
         strokeWeight(1);
     stroke(0);
 
@@ -86,7 +89,7 @@ function drawLinearVolumnEstimate(){
         
         cylinder(calculateCylinderRadiusLinear(getLinearLeftX(i),getLinearRightX(i)) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         pop();      
-    }
+    }*/
     pop();
 }
 function drawIntervalLinear(start , end){
@@ -125,12 +128,13 @@ function drawGrid(){
 }
 function drawLinearFunction(start, end){
     pg.push();
-    pg.strokeWeight(6);
+    pg.strokeWeight(1);
     pg.stroke(255,0,0);
     pg.translate(0,-translationY);
     pg.beginShape();
-    for (var i = start; i < end; i++){
-        pg.vertex(i-SCREENSTARTX3D , slope*(-i)-SCREENSTARTY3D);
+    for (var i = start; i <= end; i++){
+        pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i)*baseGridXValue-SCREENSTARTY3D);
+        console.log(-findYCoordinate(0)*baseGridXValue);
     }
     pg.endShape();
     pg.pop();
@@ -173,3 +177,14 @@ function drawCoordinates(){
     var lowerBound = 
     document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
 }*/
+
+function findYCoordinate(xC){
+    var func = equation;
+    func = func.replace(/\s/g,'');
+    func = func.replace(/x/g, "(x)");
+    func = func.replace(/x/g, xC);
+    return math.eval(func);
+}
+function getEquation(){
+    equation = document.getElementById("function1").value;
+}
