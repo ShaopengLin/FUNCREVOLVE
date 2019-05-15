@@ -1,15 +1,8 @@
 function calculateXvaluePower(){
     var powerFunction = document.getElementById("function1").value;
-    var powerSignPos = powerFunction.indexOf("^");
-    var powerOf;
     var x = 3;
-    for (var i = 1; !isNaN(powerFunction[powerSignPos+i]); i++){
+    console.log(math.eval('x+2'));
 
-        powerOf = powerFunction.substr(powerSignPos+1,i);
-    }
-    var powerNum = "x^" + powerOf;
-    powerFunction = powerFunction.replace(/\s/g,'');
-    powerNum = powerNum.replace(powerNum,"Math.pow(x,"+powerOf+')');
 }
 
 function drawPowerFunction(){
