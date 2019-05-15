@@ -31,6 +31,7 @@ function getAxisOfRotation(){
 
 function resetGraph(){
 	document.getElementById("function1").value = "x";
+	document.getElementById("function2").value = "NA";
 	document.getElementById("lowerBound").value = "-5.0";
 	document.getElementById("upperBound").value = "5.0";
 	document.getElementById("y-axis").value = "0";

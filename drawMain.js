@@ -5,11 +5,11 @@ var SCREENSTARTX3D = (-side/2.0);
 var SCREENSTARTY3D = (-side/2.0);
 var baseGridXValue = side/40.0;
 var baseGridYValue = side/40.0;
-var intervalInit = -5;
-var intervalFinal = 5;
-var translationY = 0*baseGridYValue;
-var slope = 1;
-var subIntervals = 0;
+var intervalInit;//= -5;
+var intervalFinal;//= 5;
+//var translationY = 0*baseGridYValue;
+//var slope = 1;
+var subIntervals; //= 0;
 var mx = 0;
 var my = 0;
 var angle = 0;
@@ -17,8 +17,8 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
-var equation1 = "x";
-var equation2 = "NA";
+var equation1; //= "x";
+var equation2; //= "NA";
 var revolve = false;
 var rotateAxis = "y";
 var washer = true;
@@ -30,7 +30,8 @@ function setup() {
     b = createGraphics(side,side);
     transp = createGraphics(side,side);
     b.background(255);
-    drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
+    getInfo();
+    //drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
 
 }
