@@ -30,6 +30,7 @@ function setup() {
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
+    subIntervals = getSubIntervals();
     background(255);
     angleMode(DEGREES);
     drawIntervalLinear(intervalInit*baseGridXValue,intervalFinal*baseGridXValue);
@@ -49,7 +50,6 @@ function getInfo(){
         intervalFinal =upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-        subIntervals = getSubIntervals();
 }
 //need input later interval 0-5
 function getLinearLeftX(i){
@@ -64,8 +64,9 @@ function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
 function drawLinearVolumnEstimate(){
     push();
     texture(b);
-    strokeWeight(1);
+        strokeWeight(1);
     stroke(0);
+
     //initial fixation
     translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
     //vertical translation
