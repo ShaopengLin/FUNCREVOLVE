@@ -32,6 +32,7 @@ function setup() {
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
+    subIntervals = getSubIntervals();
     background(255);
     angleMode(DEGREES);
     subIntervals = getSubIntervals();
@@ -49,10 +50,14 @@ function draw() {
 }
 function getInfo(){
         intervalInit = lowerBound();
-        intervalFinal =upperBound();
+        intervalFinal = upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
         calculateXvaluePower();
+<<<<<<< HEAD
+=======
+        trigYcoord();
+>>>>>>> 5c6071d336009749d40adb76bd3c224c1e98ad35
         
 }
 //need input later interval 0-5
@@ -65,11 +70,13 @@ function getLinearRightX(i){
 function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
 }
+
 function drawLinearVolumnEstimate(){
     push();
     texture(b);
-    strokeWeight(1);
+        strokeWeight(1);
     stroke(0);
+
     //initial fixation
     translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
     //vertical translation
@@ -170,4 +177,3 @@ function drawCoordinates(){
     var lowerBound = 
     document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
 }*/
-

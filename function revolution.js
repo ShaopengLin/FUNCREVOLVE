@@ -48,11 +48,6 @@ function linearVerticalShift(){
 		return parseFloat(verticalShift, 10);
 	}
 }
-//function linear
-
-//var x;
-//var output = document.getElementById("demo");
-//output.innerHTML = slider.value; // Display the default slider value
 
 
 // Update the current slider value (each time you drag the slider handle)
