@@ -29,6 +29,14 @@ function getAxisOfRotation(){
 	return parseFloat(axis, 10);
 }
 
+function function1color(){
+
+}
+
+function function2color(){
+	
+}
+
 function resetGraph(){
 	document.getElementById("function1").value = "x";
 	document.getElementById("function2").value = "NA";

@@ -63,10 +63,10 @@ function getInfo(){
 
 //need input later interval 0-5
 function getLinearLeftX(i){
-    return findYCoordinate(i);
+    return findYCoordinate(i,equation1);
 }
 function getLinearRightX(i){
-    return findYCoordinate(i+1/subIntervals* (intervalFinal - intervalInit));
+    return findYCoordinate(i+1/subIntervals* (intervalFinal - intervalInit),equation1);
 }
 function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
@@ -194,7 +194,7 @@ function findYCoordinate(xC, equation){
 }
 function getEquation(){
     equation1 = document.getElementById("function1").value;
-    equation2 = document.getElementById("function1").value;
+    equation2 = document.getElementById("function2").value;
     if(equation2 == "NA"){
         washer = false;
     }
