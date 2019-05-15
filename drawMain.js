@@ -47,14 +47,12 @@ function draw() {
 }
 function getInfo(){
         intervalInit = lowerBound();
-        intervalFinal =upperBound();
+        intervalFinal = upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-<<<<<<< HEAD
-=======
-    calculateXvaluePower();
+        calculateXvaluePower();
+        trigYcoord();
         
->>>>>>> 17f9e06388c27e3bedb3a50afe285ded97bf85d5
 }
 //need input later interval 0-5
 function getLinearLeftX(i){
@@ -66,6 +64,7 @@ function getLinearRightX(i){
 function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
 }
+
 function drawLinearVolumnEstimate(){
     push();
     texture(b);
@@ -172,4 +171,3 @@ function drawCoordinates(){
     var lowerBound = 
     document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
 }*/
-

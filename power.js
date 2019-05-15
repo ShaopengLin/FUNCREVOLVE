@@ -1,6 +1,6 @@
 function calculateXvaluePower(){
     var powerFunction = document.getElementById("function1").value;
-    var powerSignPos = powerFunction.indexOf("^")
+    var powerSignPos = powerFunction.indexOf("^");
     var powerOf;
     var x = 3;
     for (var i = 1; !isNaN(powerFunction[powerSignPos+i]); i++){
