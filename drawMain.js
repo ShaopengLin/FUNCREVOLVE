@@ -57,15 +57,11 @@ function getInfo(){
         intervalFinal = upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-<<<<<<< HEAD
         calculateXvaluePower();
-=======
-        //calculateXvaluePower();
-        //trigYcoord();
         getEquation();
         
->>>>>>> dfd9f038fbf009cb6086b8f7627ed64133a993d4
 }
+
 //need input later interval 0-5
 function getLinearLeftX(i){
     return slope*((i / subIntervals) * baseGridXValue*(intervalFinal-intervalInit) + intervalInit*baseGridXValue) + translationY;
