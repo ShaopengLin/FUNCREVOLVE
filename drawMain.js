@@ -1,4 +1,4 @@
-var side = 400;
+var side = 450;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2.0);
