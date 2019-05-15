@@ -28,7 +28,6 @@ function setup() {
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
    // console.log(math.simplify("3+2/4").toString());
-    console.log(math.eval('3+1*sin(20)*e^3'));
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -54,10 +53,7 @@ function getInfo(){
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
         calculateXvaluePower();
-<<<<<<< HEAD
-=======
         trigYcoord();
->>>>>>> 5c6071d336009749d40adb76bd3c224c1e98ad35
         
 }
 //need input later interval 0-5
