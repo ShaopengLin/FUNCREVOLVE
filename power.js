@@ -1,7 +1,7 @@
 function calculateXvaluePower(){
     var powerFunction = document.getElementById("function1").value;
     var x = 3;
-    console.log(math.eval('x+2'));
+    //console.log(math.eval('x+2'));
 
 }
 

@@ -16,44 +16,30 @@ function getSubIntervals(){
 	return parseFloat(subintervals, 10);
 }
 
-function linearSlope(){
-	var linearFunction = document.getElementById("function1").value;
-    linearFunction = linearFunction.replace(/\s/g,'');
-	if(linearFunction.search("x") == -1){
-		return 0;
+function getAxisOfRotation(){
+	var axis;
+	if(document.getElementById('y').checked) {
+		axis = document.getElementById('y-axis').value;
 	}
-	else if(linearFunction.search("x") == 0){
-		return 1;
+
+	else if(document.getElementById('x').checked) {
+		rotateAxis = "x";
+		axis = document.getElementById('y-axis').value;
 	}
-	else{
-		var slope = linearFunction.substr(0, linearFunction.search("x"));
-		return parseFloat(slope, 10);
-	}
+	return parseFloat(axis, 10);
 }
 
-function linearVerticalShift(){
-	var linearFunction = document.getElementById("function1").value;
-    linearFunction = linearFunction.replace(/\s/g,'');
-	if(linearFunction.search("x") == -1){
-		return linearFunction;
-	}
-    else if(linearFunction.length == 1 && linearFunction.search("x") == 0){
-		return 0;
-	}
-    else if(linearFunction.length == linearFunction.search("x")+1){
-        return 0;
-    }
-	else{
-		var verticalShift = linearFunction.substr(linearFunction.search("x") + 1, linearFunction.length);
-		return parseFloat(verticalShift, 10);
-	}
+function resetGraph(){
+	document.getElementById("function1").value = "x";
+	document.getElementById("lowerBound").value = "-5.0";
+	document.getElementById("upperBound").value = "5.0";
+	document.getElementById("y-axis").value = "0";
+	document.getElementById("x-axis").value = "0";
+	document.getElementById("y").checked = "true";
+	document.getElementById("y").checked = "false";
+	document.getElementById("subintervals").value = "0";
+	getInfo();
 }
-
-
-// Update the current slider value (each time you drag the slider handle)
-//slider.oninput = function() {
-  //output.innerHTML = this.value;
-//}
 
 
 

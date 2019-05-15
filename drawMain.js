@@ -5,8 +5,8 @@ var SCREENSTARTX3D = (-side/2.0);
 var SCREENSTARTY3D = (-side/2.0);
 var baseGridXValue = side/40.0;
 var baseGridYValue = side/40.0;
-var intervalInit = 0;
-var intervalFinal =5;
+var intervalInit = -5;
+var intervalFinal = 5;
 var translationY = 0*baseGridYValue;
 var slope = 1;
 var subIntervals = 0;
@@ -17,7 +17,11 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
-var equation = "x";
+var equation1 = "x";
+var equation2 = "NA";
+var revolve = false;
+var rotateAxis = "y";
+var washer = true;
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
@@ -29,8 +33,6 @@ function setup() {
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
 
-   //console.log(math.simplify("3+2/4").toString());
-   //findYCoordinate(1);
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -40,9 +42,10 @@ function draw() {
     subIntervals = getSubIntervals();
     drawIntervalLinear(intervalInit,intervalFinal);
     rotateCanvas();
-    drawLinearVolumnEstimate();
+    if (revolve == true){
+        drawLinearVolumnEstimate();
+    }
     //interval 1-5
-    
     push();
     texture(pg);
     translate(-width/2,-height/2,0);
@@ -53,17 +56,8 @@ function draw() {
 function getInfo(){
         intervalInit = lowerBound();
         intervalFinal = upperBound();
-        translationY = linearVerticalShift()*baseGridYValue;
-        slope = linearSlope();
-<<<<<<< HEAD
-        calculateXvaluePower();
-=======
-
-        //calculateXvaluePower();
-        //trigYcoord();
->>>>>>> f5f4cd63c52543a197bcc61972fcad190d7f92fd
         getEquation();
-        
+        revolve = false;  
 }
 
 //need input later interval 0-5
@@ -82,6 +76,7 @@ function drawLinearVolumnEstimate(){
     texture(b);
     strokeWeight(1);
     stroke(0);
+    
     var xCoord = intervalInit;
     //initial fixation
     translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
@@ -102,6 +97,7 @@ function drawLinearVolumnEstimate(){
     }
     pop();
 }
+
 function drawIntervalLinear(start , end){
     pg.clear();
     pg.noFill();
@@ -142,8 +138,8 @@ function drawLinearFunction(start, end){
     pg.stroke(255,0,0);
     //pg.translate(0,-translationY);
     pg.beginShape();
-    for (var i = start; i <= end; i++){
-        pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i)*baseGridXValue-SCREENSTARTY3D);
+    for (var i = start; i <= end; i+=0.1){
+        pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i, equation1)*baseGridXValue-SCREENSTARTY3D);
 
     }
     pg.endShape();
@@ -188,7 +184,7 @@ function drawCoordinates(){
     document.getElementById("res").innerHTML = abs(upperBound-lowerBound);
 }*/
 
-function findYCoordinate(xC){
+function findYCoordinate(xC, equation){
     var func = equation;
     func = func.replace(/\s/g,'');
     func = func.replace(/x/g, "(x)");
@@ -196,5 +192,9 @@ function findYCoordinate(xC){
     return math.eval(func);
 }
 function getEquation(){
-    equation = document.getElementById("function1").value;
+    equation1 = document.getElementById("function1").value;
+    equation2 = document.getElementById("function1").value;
+    if(equation2 == "NA"){
+        washer = false;
+    }
 }

@@ -6,7 +6,6 @@
     <script src="function revolution.js"></script>
     <script src="drawMain.js"></script>
     <script src="power.js"></script>
-    <script src="trig.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.10.0/math.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
@@ -66,16 +65,16 @@
 
     <div class="divRevolve">
         <h2> Revolve </h2>
-        <input type="submit" value="Revolve" name="" class="button" id="revolve" onclick="">
+        <input type="submit" value="Revolve" name="" class="button" id="revolve" onclick="revolve = true">
         <p class="paragraph"> Non vertical line: <br> The line y=0 is the x-axis.</p>
-        <input type="radio" name="xory" checked="">
+        <input type="radio" name="xory" checked="" id="y">
         across y=
-        <input type="Number" value="0" name="" style="width: 40px;">
+        <input type="number" value="0" name="" style="width: 40px;" id="y-axis">
         <p class="paragraph"> Vertical line: <br> The line x=0 is the y-axis.</p>
-        <input type="radio" name="xory">
+        <input type="radio" name="xory" id="x">
         across x=
-        <input type="Number" value="0" name="" style="width: 40px;">
-        <br><input type="submit" value="Clear Graph" name="" class="button" id="clearGraph">
+        <input type="number" value="0" name="" style="width: 40px;" id="x-axis">
+        <br><input type="submit" value="Clear Graph" name="" class="button" id="clearGraph" onclick="resetGraph()">
     </div>
 
     <div class="divStatistics" id = "volumeDisplay">
