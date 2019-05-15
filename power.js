@@ -10,7 +10,6 @@ function calculateXvaluePower(){
     var powerNum = "x^" + powerOf;
     powerFunction = powerFunction.replace(/\s/g,'');
     powerNum = powerNum.replace(powerNum,"Math.pow(x,"+powerOf+')');
-    console.log(eval(powerNum));
 }
 
 function drawPowerFunction(){

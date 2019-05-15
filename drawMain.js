@@ -17,6 +17,7 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
+
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(450,250);
@@ -26,6 +27,8 @@ function setup() {
     b.background(255);
     drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
+   // console.log(math.simplify("3+2/4").toString());
+    console.log(math.eval('3+1*sin(20)*e^3'));
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -49,7 +52,7 @@ function getInfo(){
         intervalFinal =upperBound();
         translationY = linearVerticalShift()*baseGridYValue;
         slope = linearSlope();
-    calculateXvaluePower();
+        calculateXvaluePower();
         
 }
 //need input later interval 0-5
