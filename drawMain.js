@@ -44,7 +44,10 @@ function draw() {
     drawFunctionGraphics(intervalInit,intervalFinal);
     rotateCanvas();
     if (revolve == true){
-        drawVolumnEstimate();
+        drawVolumnEstimate(equation1);
+        /*if (washer == true){
+            drawVolumnEstimate(equation2);
+        }*/
     }
     //interval 1-5
     push();
@@ -62,17 +65,11 @@ function getInfo(){
 }
 
 //need input later interval 0-5
-function getLeftXValue(i){
-    return findYCoordinate(i,equation1);
-}
-function getRightXValue(i){
-    return findYCoordinate(i+1/subIntervals* (intervalFinal - intervalInit),equation1);
-}
 function calculateCylinderRadius(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
 }
 
-function drawVolumnEstimate(){
+function drawVolumnEstimate(equation){
     push();
     texture(b);
     strokeWeight(1);
@@ -91,7 +88,7 @@ function drawVolumnEstimate(){
         rotateZ(90);
         //draw cylinder
         
-        cylinder(calculateCylinderRadius(getLinearLeftX(xCoord)*baseGridXValue,getLinearRightX(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
@@ -104,9 +101,9 @@ function drawFunctionGraphics(start , end){
     pg.noFill();
     pg.smooth();
     drawCoordinates();
-    drawFunctionInterval(start, end, equation1);
+    drawFunctionInterval(start, end, equation1, colorFunc1);
     if (washer == true){
-        drawFunctionInterval(start, end, equation2);
+        drawFunctionInterval(start, end, equation2, colorFunc2);
     }
     drawGrid();
 }
@@ -136,10 +133,10 @@ function drawGrid(){
     }
     pop();
 }
-function drawFunctionInterval(start, end, equation){
+function drawFunctionInterval(start, end, equation, colour){
     pg.push();
     pg.strokeWeight(3);
-    setInitialColor();
+    setInitialColor(colour);
     
     //pg.translate(0,-translationY);
     pg.beginShape();
@@ -206,7 +203,6 @@ function getEquation(){
     else{
         washer = true;
     }
-<<<<<<< HEAD
 }
 
 function setInitialColor(colorFunc){
@@ -219,6 +215,4 @@ function setInitialColor(colorFunc){
     else if(colorFunc == "green"){
         pg.stroke(0, 255, 0);
     }
-=======
->>>>>>> 7dd99fafbb9b95a0c893c5f227373acafec57e7a
 }
