@@ -5,9 +5,9 @@ var SCREENSTARTX3D = (-side/2.0);
 var SCREENSTARTY3D = (-side/2.0);
 var baseGridXValue = side/40.0;
 var baseGridYValue = side/40.0;
-var intervalInit;//= -5;
-var intervalFinal;//= 5;
-var subIntervals; //= 0;
+var intervalInit;
+var intervalFinal;
+var subIntervals;
 var mx = 0;
 var my = 0;
 var angle = 0;
@@ -15,11 +15,11 @@ var mainCanvas;
 var pg;
 var yes = 0;
 var transp;
-var equation1; //= "x";
-var equation2; //= "NA";
+var equation1;
+var equation2;
 var revolve = false;
 var rotateAxis = "y";
-var washer = true;
+var washer = false;
 var colorFunc1;
 var colorFunc2;
 
@@ -137,15 +137,7 @@ function drawGrid(){
 function drawFunctionInterval(start, end){
     pg.push();
     pg.strokeWeight(3);
-    if(colorFunc1 == "red"){
-        pg.stroke(255, 0, 0);
-    }
-    else if(colorFunc1 == "blue"){
-        pg.stroke(0, 0, 255);
-    }
-    else if(colorFunc1 == "green"){
-        pg.stroke(0, 255, 0);
-    }
+    setInitialColor();
     
     //pg.translate(0,-translationY);
     pg.beginShape();
@@ -202,10 +194,26 @@ function findYCoordinate(xC, equation){
     func = func.replace(/x/g, xC);
     return math.eval(func);
 }
+
 function getEquation(){
     equation1 = document.getElementById("function1").value;
     equation2 = document.getElementById("function2").value;
     if(equation2 == "NA" || equation2 == ""){
         washer = false;
+    }
+    else{
+        washer = true;
+    }
+}
+
+function setInitialColor(colorFunc){
+    if(colorFunc == "red"){
+        pg.stroke(255, 0, 0);
+    }
+    else if(colorFunc == "blue"){
+        pg.stroke(0, 0, 255);
+    }
+    else if(colorFunc == "green"){
+        pg.stroke(0, 255, 0);
     }
 }
