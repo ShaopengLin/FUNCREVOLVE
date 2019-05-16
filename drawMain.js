@@ -45,9 +45,9 @@ function draw() {
     rotateCanvas();
     if (revolve == true){
         drawVolumnEstimate(equation1);
-        /*if (washer == true){
+        if (washer == true){
             drawVolumnEstimate(equation2);
-        }*/
+        }
     }
     //interval 1-5
     push();
@@ -88,11 +88,7 @@ function drawVolumnEstimate(equation){
         rotateZ(90);
         //draw cylinder
         
-<<<<<<< HEAD
-        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
-=======
-        cylinder(calculateCylinderRadius(getLeftXValue(xCoord)*baseGridXValue,getRightXValue(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
->>>>>>> d71f36ff62e4a9e323e33b69c3e09e652d10feeb
+        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals); 
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
