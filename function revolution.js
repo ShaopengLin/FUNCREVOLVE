@@ -30,11 +30,11 @@ function getAxisOfRotation(){
 }
 
 function function1color(){
-
+	return document.getElementById("color1").value;
 }
 
 function function2color(){
-	
+	return document.getElementById("color2").value;
 }
 
 function resetGraph(){
@@ -47,6 +47,8 @@ function resetGraph(){
 	document.getElementById("y").checked = "true";
 	document.getElementById("y").checked = "false";
 	document.getElementById("subintervals").value = "0";
+	document.getElementById("color1").value = "red";
+	document.getElementById("color2").value = "blue";
 	getInfo();
 }
 
