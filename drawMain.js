@@ -104,8 +104,10 @@ function drawFunctionGraphics(start , end){
     pg.noFill();
     pg.smooth();
     drawCoordinates();
-    drawFunctionInterval(start, end);
-    drawFunctionInterval(start, end);
+    drawFunctionInterval(start, end, equation1);
+    if (washer == true){
+        drawFunctionInterval(start, end, equation2);
+    }
     drawGrid();
 }
 function rotateCanvas(){
@@ -134,7 +136,7 @@ function drawGrid(){
     }
     pop();
 }
-function drawFunctionInterval(start, end){
+function drawFunctionInterval(start, end, equation){
     pg.push();
     pg.strokeWeight(3);
     if(colorFunc1 == "red"){
@@ -150,7 +152,7 @@ function drawFunctionInterval(start, end){
     //pg.translate(0,-translationY);
     pg.beginShape();
     for (var i = start; i <= end; i+=0.1){
-        pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i, equation1)*baseGridXValue-SCREENSTARTY3D);
+        pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i, equation)*baseGridXValue-SCREENSTARTY3D);
 
     }
     pg.endShape();
@@ -207,5 +209,8 @@ function getEquation(){
     equation2 = document.getElementById("function2").value;
     if(equation2 == "NA" || equation2 == ""){
         washer = false;
+    }
+    else{
+        washer = true;
     }
 }
