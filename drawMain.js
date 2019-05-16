@@ -1,4 +1,4 @@
-var side = 400;
+var side = 450;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2.0);
@@ -20,6 +20,8 @@ var equation2; //= "NA";
 var revolve = false;
 var rotateAxis = "y";
 var washer = true;
+var colorFunc1;
+var colorFunc2;
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
@@ -34,6 +36,8 @@ function setup() {
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
+    colorFunc1 = function1color();
+    colorFunc2 = function2color();
     subIntervals = getSubIntervals();
     background(255);
     angleMode(DEGREES);
@@ -133,7 +137,16 @@ function drawGrid(){
 function drawFunctionInterval(start, end){
     pg.push();
     pg.strokeWeight(3);
-    pg.stroke(255,0,0);
+    if(colorFunc1 == "red"){
+        pg.stroke(255, 0, 0);
+    }
+    else if(colorFunc1 == "blue"){
+        pg.stroke(0, 0, 255);
+    }
+    else if(colorFunc1 == "green"){
+        pg.stroke(0, 255, 0);
+    }
+    
     //pg.translate(0,-translationY);
     pg.beginShape();
     for (var i = start; i <= end; i+=0.1){
@@ -192,7 +205,7 @@ function findYCoordinate(xC, equation){
 function getEquation(){
     equation1 = document.getElementById("function1").value;
     equation2 = document.getElementById("function2").value;
-    if(equation2 == "NA"){
+    if(equation2 == "NA" || equation2 == ""){
         washer = false;
     }
 }
