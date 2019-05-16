@@ -1,4 +1,4 @@
-var side = 450;
+var side = 600;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2.0);
@@ -25,7 +25,7 @@ var colorFunc2;
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(450,250);
+    mainCanvas.position(350,250);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     transp = createGraphics(side,side);
@@ -91,7 +91,7 @@ function drawVolumnEstimate(){
         rotateZ(90);
         //draw cylinder
         
-        cylinder(calculateCylinderRadius(getLinearLeftX(xCoord)*baseGridXValue,getLinearRightX(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+        cylinder(calculateCylinderRadius(getLeftXValue(xCoord)*baseGridXValue,getRightXValue(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
@@ -206,7 +206,6 @@ function getEquation(){
     else{
         washer = true;
     }
-<<<<<<< HEAD
 }
 
 function setInitialColor(colorFunc){
@@ -219,6 +218,4 @@ function setInitialColor(colorFunc){
     else if(colorFunc == "green"){
         pg.stroke(0, 255, 0);
     }
-=======
->>>>>>> 7dd99fafbb9b95a0c893c5f227373acafec57e7a
 }
