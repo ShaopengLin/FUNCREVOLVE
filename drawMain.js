@@ -7,8 +7,6 @@ var baseGridXValue = side/40.0;
 var baseGridYValue = side/40.0;
 var intervalInit;//= -5;
 var intervalFinal;//= 5;
-//var translationY = 0*baseGridYValue;
-//var slope = 1;
 var subIntervals; //= 0;
 var mx = 0;
 var my = 0;
@@ -31,7 +29,6 @@ function setup() {
     transp = createGraphics(side,side);
     b.background(255);
     getInfo();
-    //drawIntervalLinear(SCREENSTARTX3D,-SCREENSTARTX3D);
     frameRate(60);
 
 }
@@ -40,11 +37,10 @@ function draw() {
     subIntervals = getSubIntervals();
     background(255);
     angleMode(DEGREES);
-    subIntervals = getSubIntervals();
-    drawIntervalLinear(intervalInit,intervalFinal);
+    drawFunctionGraphics(intervalInit,intervalFinal);
     rotateCanvas();
     if (revolve == true){
-        drawLinearVolumnEstimate();
+        drawVolumnEstimate();
     }
     //interval 1-5
     push();
@@ -62,17 +58,17 @@ function getInfo(){
 }
 
 //need input later interval 0-5
-function getLinearLeftX(i){
+function getLeftXValue(i){
     return findYCoordinate(i,equation1);
 }
-function getLinearRightX(i){
+function getRightXValue(i){
     return findYCoordinate(i+1/subIntervals* (intervalFinal - intervalInit),equation1);
 }
-function calculateCylinderRadiusLinear(leftXcoord, rightXcoord){
+function calculateCylinderRadius(leftXcoord, rightXcoord){
     return (leftXcoord+rightXcoord)/2;
 }
 
-function drawLinearVolumnEstimate(){
+function drawVolumnEstimate(){
     push();
     texture(b);
     strokeWeight(1);
@@ -91,7 +87,7 @@ function drawLinearVolumnEstimate(){
         rotateZ(90);
         //draw cylinder
         
-        cylinder(calculateCylinderRadiusLinear(getLinearLeftX(xCoord)*baseGridXValue,getLinearRightX(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+        cylinder(calculateCylinderRadius(getLinearLeftX(xCoord)*baseGridXValue,getLinearRightX(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
@@ -99,12 +95,13 @@ function drawLinearVolumnEstimate(){
     pop();
 }
 
-function drawIntervalLinear(start , end){
+function drawFunctionGraphics(start , end){
     pg.clear();
     pg.noFill();
     pg.smooth();
     drawCoordinates();
-    drawLinearFunction(start, end);
+    drawFunctionInterval(start, end);
+    drawFunctionInterval(start, end);
     drawGrid();
 }
 function rotateCanvas(){
@@ -133,7 +130,7 @@ function drawGrid(){
     }
     pop();
 }
-function drawLinearFunction(start, end){
+function drawFunctionInterval(start, end){
     pg.push();
     pg.strokeWeight(3);
     pg.stroke(255,0,0);
