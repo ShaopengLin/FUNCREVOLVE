@@ -1,4 +1,4 @@
-var side = 450;
+var side = 600;
 var SCREENSTARTX2D = 0;
 var SCREENSARTY2D = 0;
 var SCREENSTARTX3D = (-side/2.0);
@@ -25,7 +25,7 @@ var colorFunc2;
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
-    mainCanvas.position(450,250);
+    mainCanvas.position(350,250);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
     transp = createGraphics(side,side);
@@ -88,7 +88,11 @@ function drawVolumnEstimate(equation){
         rotateZ(90);
         //draw cylinder
         
+<<<<<<< HEAD
         cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+=======
+        cylinder(calculateCylinderRadius(getLeftXValue(xCoord)*baseGridXValue,getRightXValue(xCoord)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+>>>>>>> d71f36ff62e4a9e323e33b69c3e09e652d10feeb
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         

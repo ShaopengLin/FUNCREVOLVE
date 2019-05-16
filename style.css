@@ -1,6 +1,8 @@
 body{
   background-color: #ffcf79;
   font-family: Helvetica;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1{
@@ -54,8 +56,10 @@ p.paragraph{
   border-width: 2px;
   border-style: solid;
   background-color: #D6DBDF;
-  margin-top: 70px;
-  margin-right: 100px;
+  margin: 20px;
+  position: relative;
+  top: 80px;
+  right: 40px;
   width: 300px;
   float: right;
 }
@@ -68,8 +72,9 @@ p.paragraph{
   border-width: 2px;
   border-style: solid;
   background-color: #D6DBDF;
-  margin-top: 450px;
-  margin-left: 50px;
+  margin: 20px;
+  margin-top: 520px;
+  margin-left: 40px;
   float: left;
   width: 380px;
 }
@@ -82,8 +87,8 @@ p.paragraph{
   border-width: 2px;
   border-style: solid;
   background-color: #D6DBDF;
-  margin: 30px;
-  margin-top: 450px;
+  margin: 20px;
+  margin-top: 520px;
   float: left;
   width: 380px;
 }
@@ -95,7 +100,8 @@ p.paragraph{
   border-width: 2px;
   border-style: solid;
   background-color: #D6DBDF;
-  margin-top: 137px;
+  margin: 20px;
+  margin-top: 237px;
   width: 400px;
   float: left;
 }
