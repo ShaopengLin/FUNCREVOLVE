@@ -1,10 +1,10 @@
 body{
   background-color: #ffcf79;
   font-family: Helvetica;
-  margin: 20px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  width: 1300px;
 }
 
 h1{
@@ -38,6 +38,11 @@ p.paragraph{
   margin-bottom: 5px;
 }
 
+#title{
+  position: absolute;
+  left: 240px;
+}
+
 #divWindow{
   font-size: 25px;
   padding: 10px;
@@ -45,10 +50,11 @@ p.paragraph{
   border-width: 2px;
   border-style: solid;
   margin: 20px;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #D6DBDF;
   width: 490px;
+  position: absolute;
+  top: 120px;
+  left: 375px;
 }
 
 .divColour{
@@ -61,9 +67,8 @@ p.paragraph{
   margin: 20px;
   position: absolute;
   top: 400px;
-  right: 40px;
+  right: 0px;
   width: 300px;
-  float: right;
 }
 
 .divFunction{
@@ -77,8 +82,7 @@ p.paragraph{
   margin: 20px;
   position: absolute;
   top: 860px;
-  left: 40px;
-  float: left;
+  left: 15px;
   width: 380px;
 }
 
@@ -93,8 +97,7 @@ p.paragraph{
   margin: 20px;
   position: absolute;
   top: 860px;
-  left: 455px;
-  float: left;
+  left: 430px;
   width: 380px;
 }
 
@@ -108,9 +111,8 @@ p.paragraph{
   margin: 20px;
   position: absolute;
   top: 860px;
-  left: 865px;
+  left: 845px;
   width: 400px;
-  float: left;
 }
 
 .button{
