@@ -32,7 +32,6 @@ function setup() {
     b.background(255);
     getInfo();
     frameRate(60);
-
 }
 //how to rotate a shape but not clear the previous p5.js
 function draw() {
@@ -55,6 +54,9 @@ function draw() {
     translate(-width/2,-height/2,0);
     rect(0, 0, side, side);
     pop();
+    var arcShape = new THREE.Shape();
+    arcShape.moveTo( 50, 10 );
+    arcShape.absarc( 10, 10, 40, 0, Math.PI * 2, false );
     
 }
 function getInfo(){
