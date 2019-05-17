@@ -22,9 +22,14 @@ var rotateAxis = "y";
 var washer = false;
 var colorFunc1;
 var colorFunc2;
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+var renderer = new THREE.WebGLRenderer();
 
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
     mainCanvas.position(350,250);
     pg = createGraphics(side,side);
     b = createGraphics(side,side);
@@ -54,9 +59,6 @@ function draw() {
     translate(-width/2,-height/2,0);
     rect(0, 0, side, side);
     pop();
-    var arcShape = new THREE.Shape();
-    arcShape.moveTo( 50, 10 );
-    arcShape.absarc( 10, 10, 40, 0, Math.PI * 2, false );
     
 }
 function getInfo(){
@@ -76,7 +78,6 @@ function drawVolumnEstimate(equation){
     texture(b);
     strokeWeight(1);
     stroke(0);
-    
     var xCoord = intervalInit;
     //initial fixation
     translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
@@ -89,13 +90,8 @@ function drawVolumnEstimate(equation){
         //rotate by 90 degree
         rotateZ(90);
         //draw cylinder
-        
-<<<<<<< HEAD
-        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
-        
-=======
-        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals); 
->>>>>>> 5a2c9819fb51c979d7d3953298f2bbd82004bae2
+        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals,24,1,false,false);
+       
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
