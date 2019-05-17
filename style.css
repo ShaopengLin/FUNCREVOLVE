@@ -1,8 +1,10 @@
 body{
   background-color: #ffcf79;
   font-family: Helvetica;
+  margin: 20px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 }
 
 h1{
@@ -57,8 +59,8 @@ p.paragraph{
   border-style: solid;
   background-color: #D6DBDF;
   margin: 20px;
-  position: relative;
-  top: 80px;
+  position: absolute;
+  top: 400px;
   right: 40px;
   width: 300px;
   float: right;
@@ -73,8 +75,9 @@ p.paragraph{
   border-style: solid;
   background-color: #D6DBDF;
   margin: 20px;
-  margin-top: 520px;
-  margin-left: 40px;
+  position: absolute;
+  top: 860px;
+  left: 40px;
   float: left;
   width: 380px;
 }
@@ -88,7 +91,9 @@ p.paragraph{
   border-style: solid;
   background-color: #D6DBDF;
   margin: 20px;
-  margin-top: 520px;
+  position: absolute;
+  top: 860px;
+  left: 455px;
   float: left;
   width: 380px;
 }
@@ -101,7 +106,9 @@ p.paragraph{
   border-style: solid;
   background-color: #D6DBDF;
   margin: 20px;
-  margin-top: 237px;
+  position: absolute;
+  top: 860px;
+  left: 865px;
   width: 400px;
   float: left;
 }
