@@ -88,12 +88,9 @@ function drawVolumnEstimate(equation){
         rotateZ(90);
         //draw cylinder
         
-<<<<<<< HEAD
         cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         
-=======
         cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals); 
->>>>>>> 5a2c9819fb51c979d7d3953298f2bbd82004bae2
         xCoord += 1/subIntervals* (intervalFinal - intervalInit);
         pop();     
         
