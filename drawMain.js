@@ -21,7 +21,12 @@ var revolve = false;
 var rotateAxis = "y";
 var washer = false;
 var colorFunc1;
+<<<<<<< HEAD
 var colorFunc2;  
+=======
+var colorFunc2;
+
+>>>>>>> f80500095cccb563be2d0a80dcb5ac6e9ad2591d
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(350,250);
@@ -60,10 +65,10 @@ function draw() {
     
 }
 function getInfo(){
-        intervalInit = lowerBound();
-        intervalFinal = upperBound();
-        getEquation();
-        revolve = false;  
+    intervalInit = lowerBound();
+    intervalFinal = upperBound();
+    getEquation();
+    revolve = false;  
 }
 
 //need input later interval 0-5
@@ -109,13 +114,12 @@ function drawFunctionGraphics(start , end){
     drawGrid();
 }
 function rotateCanvas(){
-        angleMode(DEGREES);
+    angleMode(DEGREES);
     if (mouseIsPressed){
-    if (mouseX <= side && mouseX >= 0 && mouseY >= 0 && mouseY <=side){
-
-        mx += -(pmouseX-mouseX)*0.7;
-        my += (pmouseY-mouseY)*0.7;
-    }
+        if (mouseX <= side && mouseX >= 0 && mouseY >= 0 && mouseY <=side){
+            mx += -(pmouseX-mouseX)*0.7;
+            my += (pmouseY-mouseY)*0.7;
+        }
     }
     rotateY(mx);
     rotateX(my);
@@ -143,7 +147,6 @@ function drawFunctionInterval(start, end, equation, colour){
     pg.beginShape();
     for (var i = start; i <= end; i+=0.1){
         pg.vertex(i*baseGridXValue-SCREENSTARTX3D, -findYCoordinate(i, equation)*baseGridXValue-SCREENSTARTY3D);
-
     }
     pg.endShape();
     pg.pop();
@@ -160,7 +163,6 @@ function drawCoordinates(){
     pg.text("Y",pg.width/2+16,16);
     //Coordinates Y
     for (var i = 5; i <16; i+=5){
-
         pg.text(i.toString(),baseGridXValue*5-2*baseGridXValue,pg.height/2-baseGridYValue*(i) + baseGridYValue/2);
     }
     for (var i = -5; i >-16; i-=5){
@@ -175,7 +177,6 @@ function drawCoordinates(){
         pg.text(i.toString(),pg.width/2-baseGridYValue*(-i+1.5) + baseGridYValue/2, baseGridXValue*35+2*baseGridXValue);
     }
     for (var i = 5; i <16; i+=5){
-
         pg.text(i.toString(),pg.width/2+baseGridXValue*(i)-baseGridXValue/2, baseGridXValue*35+2*baseGridXValue);
     }
     pop();
@@ -217,6 +218,7 @@ function setInitialColor(colorFunc){
         pg.stroke(0, 255, 0);
     }
 }
+<<<<<<< HEAD
 function drawTube(radius, tubeRadius, length){
     var alteredTubeRadius = (radius-tubeRadius)/2;
     var alteredRadius = alteredTubeRadius+tubeRadius;
@@ -261,3 +263,10 @@ function drawWasherVolume(){
     }
     pop();
 }
+=======
+
+function resetView(){
+    my = 0;
+    mx = 0;
+}
+>>>>>>> f80500095cccb563be2d0a80dcb5ac6e9ad2591d
