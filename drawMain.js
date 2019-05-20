@@ -21,12 +21,7 @@ var revolve = false;
 var rotateAxis = "y";
 var washer = false;
 var colorFunc1;
-<<<<<<< HEAD
 var colorFunc2;  
-=======
-var colorFunc2;
-
->>>>>>> f80500095cccb563be2d0a80dcb5ac6e9ad2591d
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(350,250);
@@ -218,7 +213,6 @@ function setInitialColor(colorFunc){
         pg.stroke(0, 255, 0);
     }
 }
-<<<<<<< HEAD
 function drawTube(radius, tubeRadius, length){
     var alteredTubeRadius = (radius-tubeRadius)/2;
     var alteredRadius = alteredTubeRadius+tubeRadius;
@@ -263,10 +257,7 @@ function drawWasherVolume(){
     }
     pop();
 }
-=======
-
 function resetView(){
     my = 0;
     mx = 0;
 }
->>>>>>> f80500095cccb563be2d0a80dcb5ac6e9ad2591d
