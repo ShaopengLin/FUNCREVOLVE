@@ -21,7 +21,7 @@ var revolve = false;
 var rotateAxis = "y";
 var washer = false;
 var colorFunc1;
-var colorFunc2;
+var colorFunc2;  
 function setup() {
     mainCanvas = createCanvas(side,side,WEBGL);
     mainCanvas.position(350,250);
@@ -41,10 +41,13 @@ function draw() {
     angleMode(DEGREES);
     drawFunctionGraphics(intervalInit,intervalFinal);
     rotateCanvas();
+    
     if (revolve == true){
-        drawVolumnEstimate(equation1);
         if (washer == true){
-            drawVolumnEstimate(equation2);
+            drawWasherVolume();
+        }
+        else{
+        drawVolumnEstimate(equation1);
         }
     }
     //interval 1-5
@@ -53,6 +56,7 @@ function draw() {
     translate(-width/2,-height/2,0);
     rect(0, 0, side, side);
     pop();
+    
     
 }
 function getInfo(){
@@ -85,10 +89,10 @@ function drawVolumnEstimate(equation){
         rotateZ(90);
         //draw cylinder
 
-        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals,24,1,false,false);
-        xCoord += 1/subIntervals* (intervalFinal - intervalInit);
-        pop();     
+        cylinder(calculateCylinderRadius(findYCoordinate(xCoord,equation)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation)*baseGridXValue) , baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
         
+        xCoord += 1/subIntervals* (intervalFinal - intervalInit);
+        pop();
     }
     pop();
 }
@@ -212,4 +216,48 @@ function setInitialColor(colorFunc){
     else if(colorFunc == "green"){
         pg.stroke(0, 255, 0);
     }
+}
+function drawTube(radius, tubeRadius, length){
+    var alteredTubeRadius = (radius-tubeRadius)/2;
+    var alteredRadius = alteredTubeRadius+tubeRadius;
+    strokeWeight(1);
+    stroke(0);
+    push();
+    angleMode(DEGREES);
+    push();
+    rotateZ(90);
+    translate(0,-length/2);
+    cylinder(radius, length, 24,1,false,false);
+    cylinder(tubeRadius,length,24,1,false,false);
+    pop();
+    push();
+    rotateY(90);
+    torus(alteredRadius, alteredTubeRadius, 24, 2);
+    translate(0,0,length);
+    torus(alteredRadius,alteredTubeRadius, 24, 2);
+    pop();
+    pop();
+}
+function drawWasherVolume(){
+    push();
+    texture(b);
+
+    var xCoord = intervalInit;
+    //initial fixation
+    translate(baseGridXValue * (intervalFinal - intervalInit) / subIntervals / 2+intervalInit * baseGridXValue , 0);
+    //vertical translation
+    for(var i = 0; i < subIntervals; i++){
+         
+        push(); 
+        //translate length of each cylinder
+        translate(i*baseGridXValue * (intervalFinal - intervalInit) / subIntervals,0);
+        //rotate by 90 degree
+ 
+        //draw cylinder
+        drawTube(calculateCylinderRadius(findYCoordinate(xCoord,equation1)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation1)*baseGridXValue) , calculateCylinderRadius(findYCoordinate(xCoord,equation2)*baseGridXValue,findYCoordinate(xCoord+1/subIntervals* (intervalFinal - intervalInit),equation2)*baseGridXValue), baseGridXValue * (intervalFinal-intervalInit) /subIntervals);
+
+        xCoord += 1/subIntervals* (intervalFinal - intervalInit);
+        pop();
+    }
+    pop();
 }
