@@ -1,12 +1,15 @@
-
+<!---------------------------------------------------------------------------------------------------------
+Project: Function Revolution
+Description: This is the web design file for function revolution
+History: Michael Zhang & Chris Lin, May 21, 2019
+---------------------------------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
   <head>
     <title> Function Revolution </title>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
     <script src="function revolution.js"></script>
     <script src="drawMain.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.10.0/math.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
@@ -17,27 +20,36 @@
     <meta http-equiv="author" content="Michael Chris" />
     <meta http-equiv="content-language" content="en-us" />
     <link rel="stylesheet" type="text/css" href="style.css">
-
   </head>
 
   <body>
+    <!--Title section-->
     <div id="title">
         <h1> Welcome to Function Revolution</h1>
         <p class="intro"> This web based application will help you calculate volumes by using integral </p>
     </div>
 
+    <!--Window setting section-->
     <div id="divWindow">
+        <!--Reset view button-->
     	<input type="submit" value="Reset View" name="" class="button" id="resetView" onclick="resetView();">
-    	<input type="radio" name="solidorwireframe">
+
+    	<!--radio button to choose whether the cylinder is solid or wireframe-->
+        <input type="radio" name="solidorwireframe">
     	Solid
+        <!--radio button to choose whether the cylinder is solid or wireframe-->
     	<input type="radio" name="solidorwireframe" checked="">
     	Wireframe
+
+        <!--Set window button-->
     	<input type="submit" value="Set Window" name="" class="button" id="setWindow">
     </div>
 
+    <!--Section to set different colours for the two functions-->
     <div class="divColour">
         <h2> Set Colours </h2>
     	<p class="paragraph"> Function 1 Colours: </p> 
+        <!--Select input for colour of function 1-->
     	<select id="color1">
     		<option value="red">red</option>
     		<option value="blue">blue</option>
@@ -45,6 +57,7 @@
     	</select><br>
 
     	<p class="paragraph"> Function 2 Colours: </p>
+        <!--Select input for colour of function 2-->
     	<select id="color2">
     		<option value="blue">blue</option>
     		<option value="red">red</option>
@@ -52,37 +65,57 @@
     	</select>
     </div>
 
+    <!--Section for entering functions and intervals for the functions-->
     <div class="divFunction">
         <h2> Functions </h2>
         <p class="paragraph"> Function 1</p>
         <label for="function1" style="color: red;">f(x)= </label>
+        <!--Text input for function 1-->
         <input type="text" id="function1" name="" value="x">
+
         <p class="paragraph"> Function 2 <br> For washer method. <br> Leave blank for disk method</p>
         <label for="function2" style="color: red;">g(x)= </label>
+        <!--Text input for function 1-->
         <input type="text" id="function2" name="" value="NA">
+
         <div style="text-align: center;">
+            <!--Text input for intervals-->
             From <input type="text" size="8" value="-5.0" id="lowerBound" > to <input type="text" size="8" id="upperBound" value="5.0">
         </div>
+
+        <!--Set function button-->
         <input type="submit" value="Set Function" name="Set Function" class="button" id="setFunction" onclick="getInfo();">  
     </div>
 
+    <!--Section for revolving and setting the axis of rotation-->
     <div class="divRevolve">
         <h2> Revolve </h2>
+        <!--Revolve button-->
         <input type="submit" value="Revolve" name="" class="button" id="revolve" onclick="revolve = true">
+        
         <p class="paragraph"> Non vertical line: <br> The line y=0 is the x-axis.</p>
+        <!--Radio button to choose whether the function rotates around a vertical or horizontal line-->
         <input type="radio" name="xory" checked="" id="y">
         across y=
+        <!--input button for horizontal line-->
         <input type="number" value="0" name="" style="width: 40px;" id="y-axis">
+        
         <p class="paragraph"> Vertical line: <br> The line x=0 is the y-axis.</p>
+        <!--Radio button to choose whether the function rotates around a vertical or horizontal line-->
         <input type="radio" name="xory" id="x">
         across x=
+        <!--input button for vertical line-->
         <input type="number" value="0" name="" style="width: 40px;" id="x-axis">
+        
+        <!--Clear graph button-->
         <br><input type="submit" value="Clear Graph" name="" class="button" id="clearGraph" onclick="resetGraph()">
     </div>
 
+    <!--Section for choosing number of subintervals and displaying the estimated volume-->
     <div class="divStatistics" id = "volumeDisplay">
         <h2> Statistics </h2>
         <p style="font-size: 20px;"> Number of Subintervals(5 to infinity) </p> 
+        <!--Slide bar for number of subintervals-->
         <input type="range" min="5" max="200" value="5" class="slider" id="subintervals">
         <p style="text-align: left; margin-left: 10px;">Volume:</p>
     </div> 

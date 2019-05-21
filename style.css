@@ -1,3 +1,8 @@
+/************************************************************************************************************
+Project: Function Revolution
+Description: This is the style sheet of our web-based application 
+History: Michael Zhang & Chris Lin, May 21, 2019
+************************************************************************************************************/
 body{
   background-color: #ffcf79;
   font-family: Helvetica;
@@ -157,7 +162,7 @@ p.paragraph{
   border-color: black;
 }
 
-select {
+select{
   font-size: 20px;
   text-align: center;
   height: 30px;
