@@ -60,7 +60,6 @@ function function2color(){
 	//get the value that is held on the id
 	return document.getElementById("color2").value;
 }
-<<<<<<< HEAD:htmlInput.js
 //set the stroke colour in the grid buffer
 function setInitialColor(colorFunc){
     if(colorFunc == "red"){
@@ -73,10 +72,23 @@ function setInitialColor(colorFunc){
         gridBuffer.stroke(0, 255, 0);
     }
 }
-=======
-
+//get the two equations from html
+function getEquation(){
+    equation1 = document.getElementById("function1").value;
+    //set to lower case
+    equation1 = equation1.toLowerCase();
+    equation2 = document.getElementById("function2").value;
+    //only use washer when equation 2 is not empty
+    if(equation2 == "NA" || equation2 == ""){
+        washer = false;
+    }
+    else{
+        //set to lower case
+        equation2 = equation2.toLowerCase();
+        washer = true;
+    }
+}
 //function that sets all the user input value to default
->>>>>>> e8985f991548d9a588ab311992c51313da74b3bb:function revolution.js
 function resetGraph(){
 	//assign values to their corresponding id
 	document.getElementById("function1").value = "x";
@@ -92,8 +104,3 @@ function resetGraph(){
 	document.getElementById("color2").value = "blue";
 	getInfo(); //call function to reload these information back to the drawing mechanism
 }
-
-
-
-
-	

@@ -1,3 +1,8 @@
+/************************************************************************************************************
+Project: Function Revolution
+Description: This function draws the grid, the equations, and the revolved volumes on a canvas
+History: Michael Zhang & Chris Lin, May 21, 2019
+************************************************************************************************************/
 //dimension of canvas
 var side = 600;
 //the start position of 2d in a 3d perspective 
@@ -199,18 +204,6 @@ function findYCoordinate(xC, equation){
     func = func.replace(/x/g, xC);
     //calculate the Y value of the string equation
     return math.eval(func);
-}
-//get the two equations from html
-function getEquation(){
-    equation1 = document.getElementById("function1").value;
-    equation2 = document.getElementById("function2").value;
-    //only use washer when equation 2 is not empty
-    if(equation2 == "NA" || equation2 == ""){
-        washer = false;
-    }
-    else{
-        washer = true;
-    }
 }
 
 //self made primitive that draws a tube
