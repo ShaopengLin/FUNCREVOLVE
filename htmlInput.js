@@ -103,4 +103,4 @@ function resetGraph(){
 	document.getElementById("color1").value = "red";
 	document.getElementById("color2").value = "blue";
 	getInfo(); //call function to reload these information back to the drawing mechanism
-}
+} 

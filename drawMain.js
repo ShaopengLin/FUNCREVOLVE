@@ -288,4 +288,4 @@ function drawWasherVolume(){
 function resetView(){
     my = 0;
     mx = 0;
-}
+} 
