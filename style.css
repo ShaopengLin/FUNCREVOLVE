@@ -4,174 +4,174 @@ Description: This is the style sheet of our web-based application
 History: Michael Zhang & Chris Lin, May 21, 2019
 ************************************************************************************************************/
 body{
-  background-color: #ffcf79;
-  font-family: Helvetica;
-  margin-left: auto;
+  background-color: #ffcf79; /*set background color*/
+  font-family: Helvetica; /*set font type*/
+  margin-left: auto; /*align the block in the middle by setting left right margin to auto*/
   margin-right: auto;
-  position: relative;
-  width: 1300px;
+  position: relative; /*set type of positioning*/
+  width: 1300px; /*set width of the block*/
 }
 
 h1{
-  font-size: 250%;
-  font-weight: bold;
-  color: #2980B9;
-  text-decoration: underline;
-  text-align: center;
+  font-size: 250%; /*set font size*/
+  font-weight: bold; /*set style of font*/
+  color: #2980B9; /*set font colour*/
+  text-decoration: underline; /*add underline to the text*/
+  text-align: center; /*align text in the center*/
 }
 
 h2{
-  margin: 0px;
-  font-size: 25px;
-  padding: 10px;
-  text-align: left;
-  border-bottom-color: black;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  background-color: #5DADE2;
+  margin: 0px; /*no margin around*/
+  font-size: 25px; /*set font size*/
+  padding: 10px; /*set padding*/
+  text-align: left; /*align text to the left*/
+  border-bottom-color: black; /*set colour of border line*/ 
+  border-bottom-width: 2px; /*set width of border line*/
+  border-bottom-style: solid; /*set style of border line*/
+  background-color: #5DADE2; /*set background color*/
 }
 
 p.intro{
-  font-style: italic;
-  font-size: 25px;
-  text-align: center;
-  color: #3498DB;
+  font-style: italic; /*set style of font*/
+  font-size: 25px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  color: #3498DB; /*set font colour*/
 }
 
 p.paragraph{
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 10px; /*set top margin*/
+  margin-bottom: 5px; /*set bottom margin*/
 }
 
 #title{
-  position: absolute;
-  left: 240px;
+  position: absolute; /*set type of positioning*/
+  left: 240px; /*set how far right from first the non-static element*/
 }
 
 #divWindow{
-  font-size: 25px;
-  padding: 10px;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  margin: 20px;
-  background-color: #D6DBDF;
-  width: 490px;
-  position: absolute;
-  top: 120px;
-  left: 375px;
+  font-size: 25px; /*set font size*/
+  padding: 10px; /*set padding*/
+  border-color: black; /*set colour of border line*/
+  border-width: 2px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  margin: 20px; /*set margin around the element*/
+  background-color: #D6DBDF; /*set background color*/
+  width: 490px; /*set width of the block*/
+  position: absolute; /*set type of positioning*/
+  top: 120px; /*set how far below from first the non-static element*/
+  left: 375px; /*set how far right from first the non-static element*/
 }
 
 .divColour{
-  font-size: 25px;
-  text-align: center;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: #D6DBDF;
-  margin: 20px;
-  position: absolute;
-  top: 400px;
-  right: 0px;
-  width: 300px;
+  font-size: 25px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  border-color: black; /*set colour of border line*/
+  border-width: 2px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  background-color: #D6DBDF; /*set background color*/
+  margin: 20px; /*set margin around the element*/
+  position: absolute; /*set type of positioning*/
+  top: 400px; /*set how far below from first the non-static element*/
+  right: 0px; /*set how far left from first the non-static element*/
+  width: 300px; /*set width of the block*/
 }
 
 .divFunction{
-  line-height: 140%;
-  font-size: 25px;
-  text-align: center;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: #D6DBDF;
-  margin: 20px;
-  position: absolute;
-  top: 860px;
-  left: 15px;
-  width: 380px;
+  line-height: 140%; /*set line spacing*/
+  font-size: 25px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  border-color: black; /*set colour of border line*/
+  border-width: 2px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  background-color: #D6DBDF; /*set background color*/
+  margin: 20px; /*set margin around the element*/
+  position: absolute; /*set type of positioning*/
+  top: 860px; /*set how far below from first the non-static element*/
+  left: 15px; /*set how far right from first the non-static element*/
+  width: 380px; /*set width of the block*/
 }
 
 .divRevolve{
-  line-height: 140%;
-  font-size: 25px;
-  text-align: center;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: #D6DBDF;
-  margin: 20px;
-  position: absolute;
-  top: 860px;
-  left: 430px;
-  width: 380px;
+  line-height: 140%; /*set line spacing*/
+  font-size: 25px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  border-color: black; /*set colour of border line*/
+  border-width: 2px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  background-color: #D6DBDF; /*set background color*/
+  margin: 20px; /*set margin around the element*/
+  position: absolute; /*set type of positioning*/
+  top: 860px; /*set how far below from first the non-static element*/
+  left: 430px; /*set how far right from first the non-static element*/
+  width: 380px; /*set width of the block*/
 }
 
 .divStatistics{
-  font-size: 25px;
-  text-align: center;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: #D6DBDF;
-  margin: 20px;
-  position: absolute;
-  top: 860px;
-  left: 845px;
-  width: 400px;
+  font-size: 25px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  border-color: black; /*set colour of border line*/
+  border-width: 2px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  background-color: #D6DBDF; /*set background color*/
+  margin: 20px; /*set margin around the element*/
+  position: absolute; /*set type of positioning*/
+  top: 860px; /*set how far below from first the non-static element*/
+  left: 845px; /*set how far right from first the non-static element*/
+  width: 400px; /*set width of the block*/
 }
 
 .button{
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-  width: 120px;
-  height: 40px;
-  color: #666;
-  border-color: #99A3A4;
-  background-color: #E7E7E7;
-  border-width: 1px;
-  border-style: solid;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 15px; /*set font size*/
+  font-weight: bold; /*set style of font*/
+  border-radius: 5px; /*set radius for the circular corner of the rectangle button*/
+  text-align: center; /*align text in the center*/
+  width: 120px; /*set width of the button*/
+  height: 40px; /*set height of the button*/
+  color: #666; /*set font colour*/
+  border-color: #99A3A4; /*set colour of border line*/
+  background-color: #E7E7E7; /*set background color*/
+  border-width: 1px; /*set width of border line*/
+  border-style: solid; /*set style of border line*/
+  margin-top: 10px; /*set top margin*/
+  margin-bottom: 10px; /*set bottom margin*/
   box-sizing: border-box;
 }
 
 #resetView:hover{
-  color: #000;
-  border-color: black;
+  color: #000; /*set font colour*/
+  border-color: black; /*set colour of border line*/
 }
 
 #setWindow:hover{
-  color: #000;
-  border-color: black;
+  color: #000; /*set font colour*/
+  border-color: black; /*set colour of border line*/
 }
 
 #setFunction:hover{
-  color: #000;
-  border-color: black;
+  color: #000; /*set font colour*/
+  border-color: black; /*set colour of border line*/
 }
 
 #revolve:hover{
-  color: #000;
-  border-color: black;
+  color: #000; /*set font colour*/
+  border-color: black; /*set colour of border line*/
 }
 
 #clearGraph:hover{
-  color: #000;
-  border-color: black;
+  color: #000; /*set font colour*/
+  border-color: black; /*set colour of border line*/
 }
 
 select{
-  font-size: 20px;
-  text-align: center;
-  height: 30px;
-  margin: 10px;
+  font-size: 20px; /*set font size*/
+  text-align: center; /*align text in the center*/
+  height: 30px; /*set height of the select input*/
+  margin: 10px; /*set margin around the element*/
 }
     
 select:focus {
   min-width: 150px;
-  width: auto;
+  width: auto; /*default width*/
 }
 
 
