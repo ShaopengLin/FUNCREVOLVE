@@ -36,7 +36,18 @@ function function1color(){
 function function2color(){
 	return document.getElementById("color2").value;
 }
-
+//set the stroke colour in the grid buffer
+function setInitialColor(colorFunc){
+    if(colorFunc == "red"){
+        gridBuffer.stroke(255, 0, 0);
+    }
+    else if(colorFunc == "blue"){
+        gridBuffer.stroke(0, 0, 255);
+    }
+    else if(colorFunc == "green"){
+        gridBuffer.stroke(0, 255, 0);
+    }
+}
 function resetGraph(){
 	document.getElementById("function1").value = "x";
 	document.getElementById("function2").value = "NA";
