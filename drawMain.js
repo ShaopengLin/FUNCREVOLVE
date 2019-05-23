@@ -153,7 +153,7 @@ function drawFunctionInterval(start, end, equation, colour){
     setInitialColor(colour);
     //draws the function interval
     gridBuffer.beginShape();
-    for (var i = start; i <= end; i+=0.1){
+    for (var i = start; i <= end; i+=0.01){
         gridBuffer.vertex(i*baseGridValue-SCREENSTART3D, -findYCoordinate(i, equation)*baseGridValue-SCREENSTART3D);
     }
     gridBuffer.endShape();
